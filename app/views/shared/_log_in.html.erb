@@ -1,0 +1,15 @@
+<% action_url = ( action == :session) ? session_url : users_new %>
+
+<form action="<%= action_url %>" method="post">
+  <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+  <label>Email:
+    <input id="user_username" name="user[email]" type="text">
+  </label>
+
+  <label>Password:
+    <input id="user_password" name="user[password]" type="password">
+  </label>
+
+  <input type="submit" value="Sign In">
+</form>
