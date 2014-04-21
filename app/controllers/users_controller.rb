@@ -21,6 +21,12 @@ class UsersController < ApplicationController
     render :show
   end
 
+  def activate
+    @user = User.find_by(activation_token: params[:activate])
+    @user.activate = true
+    @user.save
+  end
+
   private
 
   def user_params
