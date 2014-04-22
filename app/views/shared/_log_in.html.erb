@@ -1,4 +1,4 @@
-<% action_url = ( action == :session) ? session_url : users_new %>
+<% action_url = ( action == :session) ? session_url : new_user_url %>
 
 <form action="<%= action_url %>" method="post">
   <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
