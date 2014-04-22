@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   validates :password_digest, presence: true
   validates :password, length: { minimum: 6, allow_nil: true }
   before_validation :ensure_session_token
+  before_create :ensure_activation_token
 
   def self.find_by_credentials(email, secret)
     user = User.find_by(email: email)
@@ -45,6 +46,9 @@ class User < ActiveRecord::Base
 
   def ensure_session_token
     self.session_token = self.class.generate_session_token
+  end
+
+  def ensure_actication_token
     self.activation_token = self.class.generate_unique_token_for(:activation_token)
   end
 
