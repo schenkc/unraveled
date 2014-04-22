@@ -14,7 +14,14 @@ class User < ActiveRecord::Base
   validates :password_digest, presence: true
   validates :password, length: { minimum: 6, allow_nil: true }
   before_validation :ensure_session_token
-  before_create :ensure_activation_token
+  before_validation :ensure_activation_token, only: [:create]
+
+  has_many(
+    :designs,
+    class_name: "Pattern",
+    foreign_key: :designer_id,
+    primary_key: :id
+  )
 
   def self.find_by_credentials(email, secret)
     user = User.find_by(email: email)
@@ -32,6 +39,7 @@ class User < ActiveRecord::Base
   def reset_session_token!
     self.session_token = User.generate_session_token
     self.save!
+    self.session_token
   end
 
   def password=(password)
@@ -48,7 +56,7 @@ class User < ActiveRecord::Base
     self.session_token = self.class.generate_session_token
   end
 
-  def ensure_actication_token
+  def ensure_activation_token
     self.activation_token = self.class.generate_unique_token_for(:activation_token)
   end
 

@@ -39,6 +39,21 @@ group :development do
   gem 'letter_opener'
 end
 
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+end
+
+group :test do
+  gem 'faker'
+  gem 'capybara'
+  gem 'guard-rspec'
+  gem 'shoulda-matchers'
+  gem 'launchy'
+end
+
+gem 'paperclip', '~> 4.1'
+gem 'aws-sdk'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 

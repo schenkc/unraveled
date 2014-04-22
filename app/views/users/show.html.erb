@@ -1,1 +1,25 @@
 <h1>Hey there <%= @user.email %></h1>
+
+<nav class="sidebar">
+  <ul>
+    <li><a href="#">Search Patterns</a></li>
+    <li><a href="#">Library</a></li>
+    <li><a href="#">Friends</a></li>
+    <li><a href="#">Messages</a></li>
+    <li><a href="#">Projects</a></li>
+    <li><a href="#">Queue</a></li>
+    <li><a href="#">Favorites</a></li>
+  </ul>
+</nav>
+
+<section>
+  <a href="<%= new_pattern_url %>">Add a new pattern!</a>
+  <% if @patters %>
+  <h2>Patterns you've made:</h2>
+  <ul>
+    <% @patters.each do |pattern| %>
+    <li><a href="<%= pattern_url(pattern) %>">Photo place holder<%= pattern.name %></a></li>
+    <% end %>
+  </ul>
+  <% end %>
+</section>

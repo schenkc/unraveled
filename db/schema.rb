@@ -11,10 +11,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140421181658) do
+ActiveRecord::Schema.define(version: 20140422180127) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "patterns", force: true do |t|
+    t.string   "name"
+    t.integer  "designer_id"
+    t.string   "category"
+    t.string   "yarn_name"
+    t.string   "yarn_weight"
+    t.integer  "stitch_col"
+    t.integer  "stitch_row"
+    t.integer  "swatch"
+    t.string   "swatch_stitch"
+    t.string   "needles"
+    t.string   "amount_yarn"
+    t.string   "sizes"
+    t.string   "price"
+    t.text     "notes"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "patterns", ["category"], name: "index_patterns_on_category", using: :btree
+  add_index "patterns", ["designer_id"], name: "index_patterns_on_designer_id", using: :btree
+  add_index "patterns", ["name"], name: "index_patterns_on_name", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "password_digest",  null: false
