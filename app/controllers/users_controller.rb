@@ -9,7 +9,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      redirect_to user_url(@user)
+      UserMailer.welcome_email(@user).deliver!
+      redirect_to root_url
     else
       flash.now[:errors] = @user.errors.full_messages
       render :new
@@ -21,10 +22,12 @@ class UsersController < ApplicationController
     render :show
   end
 
-  def activate
-    @user = User.find_by(activation_token: params[:activate])
+  def activate_user
+    @user = User.find_by(activation_token: params[:activation_token])
     @user.activate = true
     @user.save
+    login_user!(@user)
+    redirect_to user_url(@user)
   end
 
   private

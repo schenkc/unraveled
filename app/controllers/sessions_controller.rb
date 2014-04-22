@@ -10,13 +10,15 @@ class SessionsController < ApplicationController
 
     if user.nil?
       flash.now[:errors] ||=[]
-      flash.now << "Try again, please"
+      flash.now[:errors] << "Couldn't find user"
       render :new
-    elsif !user.activated?
-      redirect_to root_url, alert: "Check your email for activation"
+    elsif !user.activate?
+      flash.now[:errors] ||= []
+      flash.now[:errors] << "Check your email for activation"
+      render :new
     else
       login_user!(user)
-      redirect_to user_ural(user)
+      redirect_to user_url(user)
     end
   end
 

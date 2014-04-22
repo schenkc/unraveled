@@ -3,7 +3,8 @@ class UserMailer < ActionMailer::Base
 
   def welcome_email(user)
     @user = user
-    @url = users_activate_url + "?" + user.activation_token
+    @url = users_activate_url(activation_token: user.activation_token)
+    mail(to: user.email, subject: 'Welcome!')
   end
 
 end

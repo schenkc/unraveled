@@ -10,9 +10,8 @@ end
 class User < ActiveRecord::Base
 
   attr_reader :password
-  validates :email, presence: true, uniqueness: true
+  validates :email, :session_token, :activation_token, presence: true, uniqueness: true
   validates :password_digest, presence: true
-  validates :session_token, presence: true
   validates :password, length: { minimum: 6, allow_nil: true }
   before_validation :ensure_session_token
 
@@ -46,6 +45,7 @@ class User < ActiveRecord::Base
 
   def ensure_session_token
     self.session_token = self.class.generate_session_token
+    self.activation_token = self.class.generate_unique_token_for(:activation_token)
   end
 
 end
