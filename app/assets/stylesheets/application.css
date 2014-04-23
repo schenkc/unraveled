@@ -14,7 +14,7 @@
 
 /* resets */
 
-h1, h2, h3, body, section, div, button, a, label, form {
+h1, h2, h3, body, section, div, button, a, label, form, li, ul, nav {
   padding: 0;
   margin: 0;
   border: 0;
@@ -25,7 +25,8 @@ h1, h2, h3, body, section, div, button, a, label, form {
 input[type="text"],
 input[type="email"],
 input[type="password"],
-input[type="submit"] {
+input[type="submit"],
+textarea {
   -webkit-appearance: none;
   box-sizing: content-box;
   display: inline-block;
@@ -40,6 +41,21 @@ input[type="submit"] {
   color: inherit;
 }
 
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+.group:after {
+  content: "";
+  clear: both;
+  display: block;
+}
+
 input[type="submit"] {
   display: inline;
   cursor: pointer;
@@ -47,4 +63,26 @@ input[type="submit"] {
 
 body {
   font-family: sans-serif;
+  background: gray;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="submit"],
+textarea {
+  background: white;
+}
+
+nav.nav-bar {
+  border: 3px solid black;
+}
+
+nav.nav-bar a {
+  float: left;
+  padding: 10px;
+}
+
+h1 {
+  font-size: 30px;
 }

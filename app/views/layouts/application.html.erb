@@ -8,6 +8,17 @@
 </head>
 <body>
 
+<nav class="nav-bar group">
+  <ul>
+    <li><a href="<%= patterns_url %>">Patterns</a></li>
+    <li><a href="#">Library</a></li>
+    <li><a href="#">Friends</a></li>
+    <li><a href="#">Messages</a></li>
+    <li><a href="#">Projects</a></li>
+    <li><a href="#">Queue</a></li>
+    <li><a href="#">Favorites</a></li>
+  </ul>
+</nav>
 <% if flash.now[:errors] %>
   <% flash.now[:errors].each do |error| %>
     <%= error %><br>

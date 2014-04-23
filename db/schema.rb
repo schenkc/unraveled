@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140422180127) do
+ActiveRecord::Schema.define(version: 20140423150354) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "libraries", force: true do |t|
+    t.string   "pattern_id"
+    t.string   "owner_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "libraries", ["owner_id"], name: "index_libraries_on_owner_id", using: :btree
+  add_index "libraries", ["pattern_id"], name: "index_libraries_on_pattern_id", using: :btree
 
   create_table "patterns", force: true do |t|
     t.string   "name"

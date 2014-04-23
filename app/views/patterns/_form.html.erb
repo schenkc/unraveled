@@ -2,50 +2,42 @@
 <% button_text = ( action == :new ) ? "Add New Pattern" : "Update Pattern" %>
 <% method = ( action == :new ) ? "post" : "post" %>
 
+<section>
 <form action="<%= action_url %>" method="<%= method %>">
   <% if action == :edit %>
     <input type="hidden" name="_method" value="patch">
   <% end %>
   <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
-  <label>Pattern name:
+  <label for="pattern_name">Pattern name</label>
     <input id="pattern_name" name="pattern[name]" type="text" value="<%= pattern.name %>">
-  </label>
 
-  <label>Category:
+  <label for="pattern_category">Category</label>
     <input id="pattern_category" name="pattern[category]" type="text" value="<%= pattern.category %>">
-  </label>
 
-  <label>Yarn name:
+  <label for="yarn_name">Yarn name</label>
     <input id="yarn_name" name="pattern[yarn_name]" type="text" value="<%= pattern.yarn_name %>">
-  </label>
 
-  <label>Yarn weight:
+  <label for="yarn_weight">Yarn weight</label>
     <input id="yarn_weight" name="pattern[yarn_weight]" type="text" value="<%= pattern.yarn_weight %>">
-  </label>
 
+  <label>Gauge Information</label>
   <input type="text" name="pattern[stitch_col]" value="<%= pattern.stitch_col %>"> stitches and <input type="text" name="pattern[stitch_row]" value="<%= pattern.stitch_row %>"> rows per <input type="text" name="pattern[swatch]" value="<%= pattern.swatch %>"> knit in <input type="text" name="pattern[swatch_stitch]" value="<%= pattern.swatch_stitch %>">
 
-  <label>Needles:
-    <input type="text" name="pattern[needles]" value="<%= pattern.needles %>">
-  </label>
+  <label for="pattern_needles">Needles</label>
+    <input type="text" id="pattern_needles" name="pattern[needles]" value="<%= pattern.needles %>">
 
-  <label>Yarn amount:
-    <input type="text" name="pattern[amount_yarn]" value="<%= pattern.amount_yarn %>">
-  </label>
+  <label for="yarn_amount">Yarn amount</label>
+    <input type="text" id="yarn_amount" name="pattern[amount_yarn]" value="<%= pattern.amount_yarn %>">
 
-  <label>Sizes:
-    <input type="text" name="pattern[sizes]" value="<%= pattern.sizes %>">
-  </label>
+  <label for="pattern_sizes">Sizes</label>
+    <input type="text" id="pattern_sizes" name="pattern[sizes]" value="<%= pattern.sizes %>">
 
-  <label>Price:
-    <input type="text" name="pattern[price]" value="<%= pattern.price %>">
-  </label>
+  <label for="pattern_price">Price</label>
+    <input type="text" id="pattern_price" name="pattern[price]" value="<%= pattern.price %>">
 
-  <label>Notes:
-    <input type="textarea" name="pattern[notes]" value="<%= pattern.notes %>">
-  </label>
-
+  <label for="pattern_notes">Notes</label>
+    <textarea name="pattern[notes]"><%= pattern.notes %></textarea>
 
 
   <input type="submit" value="<%= button_text %>">
