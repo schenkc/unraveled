@@ -1,0 +1,22 @@
+<h1><%= @pattern.name %></h1>
+
+<div class="side-bar">
+  <p>Photo place holder</p>
+</div>
+
+<section class="pattern-info">
+  <ul>
+    <% @pattern.attributes.each do |key, value| %>
+      <li><%= key %> : <%= value%></li>
+    <% end %>
+  </ul>
+</section>
+
+<% if current_user.id == @pattern.designer_id %>
+  <a href="<%= edit_pattern_url %>">Edit this pattern</a>
+  
+  <form action="<%= pattern_url %>" method="post">
+      <input type="hidden" name="_method" value="delete">
+    <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+    <input type="submit" value="Forget this pattern">
+<% end %>

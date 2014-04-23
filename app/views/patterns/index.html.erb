@@ -1,0 +1,7 @@
+<h1>All the patterns</h1>
+
+<ul>
+  <% @patterns.each do |pattern| %>
+    <li><a href="<%= pattern_url(pattern) %>">Photo-- <%= pattern.name %> by <%= pattern.designer.email %></li>
+  <% end %>
+</ul>

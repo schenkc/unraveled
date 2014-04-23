@@ -1,4 +1,11 @@
-<form action="<%= patterns_url %>" method="post">
+<% action_url = ( action == :new ) ? patterns_url : pattern_url %>
+<% button_text = ( action == :new ) ? "Add New Pattern" : "Update Pattern" %>
+<% method = ( action == :new ) ? "post" : "post" %>
+
+<form action="<%= action_url %>" method="<%= method %>">
+  <% if action == :edit %>
+    <input type="hidden" name="_method" value="patch">
+  <% end %>
   <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
   <label>Pattern name:
@@ -41,5 +48,5 @@
 
 
 
-  <input type="submit" value="patternAdd Pattern">
+  <input type="submit" value="<%= button_text %>">
 </form>
