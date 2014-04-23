@@ -1,0 +1,8 @@
+<h1>Edit your profile</h1>
+
+  <form action="<%= user_url(current_user) %>" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="_method" value="patch">
+    <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+    <input type="file" name="user[avatar]">
+    <input type="submit" value="Update!">
+  </form>

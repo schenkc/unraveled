@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  before_filter :require_signed_in!, only: [:show, :edit, :update]
+
   def new
     @user = User.new
     render :new
@@ -20,7 +22,17 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @patterns = @user.designs
+    @library = @user.liked_patterns
     render :show
+  end
+
+  def edit
+    render :edit
+  end
+
+  def update
+    current_user.update(avatar: params[:user][:avatar])
+    redirect_to user_url(current_user)
   end
 
   def activate_user

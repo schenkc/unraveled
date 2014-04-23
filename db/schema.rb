@@ -11,20 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140423150354) do
+ActiveRecord::Schema.define(version: 20140423183324) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "libraries", force: true do |t|
-    t.string   "pattern_id"
-    t.string   "owner_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "libraries", ["owner_id"], name: "index_libraries_on_owner_id", using: :btree
-  add_index "libraries", ["pattern_id"], name: "index_libraries_on_pattern_id", using: :btree
 
   create_table "patterns", force: true do |t|
     t.string   "name"
@@ -49,14 +39,28 @@ ActiveRecord::Schema.define(version: 20140423150354) do
   add_index "patterns", ["designer_id"], name: "index_patterns_on_designer_id", using: :btree
   add_index "patterns", ["name"], name: "index_patterns_on_name", using: :btree
 
+  create_table "user_liked_patterns", force: true do |t|
+    t.integer  "pattern_id"
+    t.integer  "owner_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "user_liked_patterns", ["owner_id"], name: "index_user_liked_patterns_on_owner_id", using: :btree
+  add_index "user_liked_patterns", ["pattern_id"], name: "index_user_liked_patterns_on_pattern_id", using: :btree
+
   create_table "users", force: true do |t|
-    t.string   "password_digest",  null: false
-    t.string   "email",            null: false
-    t.string   "session_token",    null: false
+    t.string   "password_digest",     null: false
+    t.string   "email",               null: false
+    t.string   "session_token",       null: false
     t.boolean  "activate"
     t.string   "activation_token"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

@@ -1,14 +1,33 @@
 <h1>Hey there <%= @user.email %></h1>
+<% if current_user.avatar %>
+  <img src="<%= current_user.avatar.url(:thumb) %>">
+<% else %>
+  <a href="<%= edit_user_url %>">Edit Profile</a>
+<% end %>
 
-
-<section>
-  <a href="<%= new_pattern_url %>">Add a new pattern!</a>
-  <% if @patterns %>
-  <h2>Patterns you've made:</h2>
-  <ul>
-    <% @patterns.each do |pattern| %>
-    <li><a href="<%= pattern_url(pattern) %>">Photo place holder-- <%= pattern.name %></a></li>
+<section class="group">
+  <article class="patterns">
+    <a href="<%= new_pattern_url %>">Add a new pattern!</a>
+    <% if @patterns %>
+    <h2>Patterns you've made</h2>
+    <ul>
+      <% @patterns.each do |pattern| %>
+      <li><a href="<%= pattern_url(pattern) %>">Photo place holder-- <%= pattern.name %></a></li>
+      <% end %>
+    </ul>
     <% end %>
-  </ul>
-  <% end %>
+  </article>
+
+  <article class="library">
+
+    <% if @library %>
+      <h2>Patterns in your library</h2>
+      <ul>
+        <% @library.each do |pattern| %>
+        <li><a href="<%= pattern_url(pattern) %>">Photo place holder-- <%= pattern.name %></a></li>
+        <% end %>
+      </ul>
+    <% end %>
+
+  </article>
 </section>

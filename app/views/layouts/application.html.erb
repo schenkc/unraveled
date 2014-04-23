@@ -9,15 +9,29 @@
 <body>
 
 <nav class="nav-bar group">
-  <ul>
-    <li><a href="<%= patterns_url %>">Patterns</a></li>
-    <li><a href="#">Library</a></li>
-    <li><a href="#">Friends</a></li>
-    <li><a href="#">Messages</a></li>
-    <li><a href="#">Projects</a></li>
-    <li><a href="#">Queue</a></li>
-    <li><a href="#">Favorites</a></li>
-  </ul>
+  <% if current_user %>
+    <ul>
+      <li><a href="<%= patterns_url %>">Patterns</a></li>
+      <li><a href="<%= user_url(current_user) %>">Library</a></li>
+      <li><a href="#">Friends</a></li>
+      <li><a href="#">Messages</a></li>
+      <li><a href="#">Projects</a></li>
+      <li><a href="#">Queue</a></li>
+      <li><a href="#">Favorites</a></li>
+    </ul>
+
+  <form action="<%= session_url %>" method="post">
+      <input type="hidden" name="_method" value="delete">
+    <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+    <input type="submit" value="Sign Out">
+  </form>
+
+  <% else %>
+
+  <a href="<%= new_session_url %>">Sign In</a>
+  <a href="<%= new_user_url %>">Sign Up</a>
+  <% end %>
+
 </nav>
 <% if flash.now[:errors] %>
   <% flash.now[:errors].each do |error| %>
