@@ -39,6 +39,8 @@ class User < ActiveRecord::Base
     source: :pattern
   )
 
+  has_many :tags, as: :taggable
+
   def self.find_by_credentials(email, secret)
     user = User.find_by(email: email)
     if user

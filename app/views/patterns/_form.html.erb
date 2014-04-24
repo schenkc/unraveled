@@ -2,7 +2,7 @@
 <% button_text = ( action == :new ) ? "Add New Pattern" : "Update Pattern" %>
 
 <section>
-<form action="<%= action_url %>" method="post">
+<form action="<%= action_url %>" method="post" enctype="multipart/form-data">
   <% if action == :edit %>
     <input type="hidden" name="_method" value="patch">
   <% end %>
@@ -12,7 +12,35 @@
     <input id="pattern_name" name="pattern[name]" type="text" value="<%= pattern.name %>">
 
   <label for="pattern_category">Category</label>
-    <input id="pattern_category" name="pattern[category]" type="text" value="<%= pattern.category %>">
+    <select id="pattern_category" name="pattern[category]">
+      <option value="clothing" <%= "selected" if pattern.category == "clothing" %>>
+        Clothing
+      </option>
+      <option value="accessories" <%= "selected" if pattern.category == "accessories" %>>
+        Accessories
+      </option>
+      <option value="home" <%= "selected" if pattern.category == "home" %>>
+        Home
+      </option>
+      <option value="toys" <%= "selected" if pattern.category == "toys" %>>
+        Toys
+      </option>
+      <option value="pet" <%= "selected" if pattern.category == "pet" %>>
+        Pet
+      </option>
+      <option value="components" <%= "selected" if pattern.category == "components" %>>
+        Components
+      </option>
+    </select>
+
+    <label for="tags">Tags</label>
+    <input type="text" name="tag[name]">
+
+    <label for="pattern_source">Where does this pattern live?</label>
+    <input type="url" name="pattern[pattern_url]" value="<%= pattern.url %>">
+    or
+    <label for="pattern_pdf">Pattern pdf</label>
+      <input type="file" name="pattern[instruction]">
 
   <label for="yarn_name">Yarn name</label>
     <input id="yarn_name" name="pattern[yarn_name]" type="text" value="<%= pattern.yarn_name %>">
@@ -21,7 +49,9 @@
     <input id="yarn_weight" name="pattern[yarn_weight]" type="text" value="<%= pattern.yarn_weight %>">
 
   <label>Gauge Information</label>
+  <section class="gauge">
   <input type="text" name="pattern[stitch_col]" value="<%= pattern.stitch_col %>"> stitches and <input type="text" name="pattern[stitch_row]" value="<%= pattern.stitch_row %>"> rows per <input type="text" name="pattern[swatch]" value="<%= pattern.swatch %>"> knit in <input type="text" name="pattern[swatch_stitch]" value="<%= pattern.swatch_stitch %>">
+  </section>
 
   <label for="pattern_needles">Needles</label>
     <input type="text" id="pattern_needles" name="pattern[needles]" value="<%= pattern.needles %>">
