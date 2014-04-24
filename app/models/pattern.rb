@@ -38,11 +38,4 @@ class Pattern < ActiveRecord::Base
     source: :tag
   )
 
-  def make_tags(array)
-    tags = array.map do |tag_name|
-      Tag.find_or_create_by(name: tag_name)
-    end
-    @pattern.tags << tags
-  end
-
 end

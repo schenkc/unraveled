@@ -69,4 +69,11 @@ before_filter :require_signed_in!
     params.require(:tag).permit(:name)[:name].split(",").map(&:strip)
   end
 
+  def make_tags(array)
+    tags = array.map do |tag_name|
+      Tag.find_or_create_by(name: tag_name)
+    end
+    @pattern.tags << tags
+  end
+
 end

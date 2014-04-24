@@ -24,7 +24,16 @@
       <h2>Patterns in your library</h2>
       <ul>
         <% @library.each do |pattern| %>
-        <li><a href="<%= pattern_url(pattern) %>">Photo place holder-- <%= pattern.name %></a> <a href="/patterns/<%= pattern.id %>/pdf">Pattern pdf</a></li>
+        <li>
+          <a href="<%= pattern_url(pattern) %>">
+            Photo place holder-- <%= pattern.name %>
+          </a>
+          <% if pattern.instruction.exists? %>
+            <a href="/patterns/<%= pattern.id %>/pdf">
+              Pattern pdf
+            </a>
+            <% end %>
+          </li>
         <% end %>
       </ul>
     <% end %>

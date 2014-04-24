@@ -55,6 +55,8 @@ end
 gem 'paperclip', '~> 4.1'
 gem 'aws-sdk'
 gem 'figaro'
+gem 'kaminari'
+gem 'pg_search'
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
