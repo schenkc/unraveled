@@ -1,5 +1,7 @@
 class Pattern < ActiveRecord::Base
 
+  include PgSearch
+
   has_attached_file :instruction
   validates_attachment :instruction, content_type: { content_type: "application/pdf" }
 

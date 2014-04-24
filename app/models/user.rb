@@ -9,6 +9,8 @@ end
 
 class User < ActiveRecord::Base
 
+  include PgSearch
+
   attr_reader :password
   validates :email, :session_token, :activation_token, presence: true, uniqueness: true
   validates :password_digest, presence: true
