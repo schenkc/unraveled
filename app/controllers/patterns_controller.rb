@@ -11,7 +11,7 @@ before_filter :require_signed_in!
     @pattern = Pattern.new(pattern_params)
     @pattern.designer_id = current_user.id
     make_tags(tag_names)
-    add_photos(params[:picture][:images])
+    add_photos(params[:picture][:images]) unless params[:picture]
     if @pattern.save
       redirect_to pattern_url(@pattern)
     else
@@ -36,7 +36,7 @@ before_filter :require_signed_in!
     @pattern = Pattern.find(params[:id])
     @pattern.update(pattern_params)
     make_tags(tag_names)
-    add_photos(params[:picture][:images])
+    add_photos(params[:picture][:images]) unless params[:picture]
     render :show
   end
 
@@ -82,7 +82,7 @@ before_filter :require_signed_in!
   end
 
   def add_photos(array)
-    @pattern.pictures = array.map { |image| Picture.create(image: image) } unless array
+    @pattern.pictures = array.map { |image| Picture.create(image: image) }
   end
 
 end
