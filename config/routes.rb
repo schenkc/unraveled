@@ -6,7 +6,7 @@ Unraveled::Application.routes.draw do
   end
   resource :session, only: [:new, :create, :destroy]
   resources :patterns do
-    resources :libraries, only: [:create]
+    resources :user_liked_patterns, only: [:create]
   end
-  resources :libraries, only: [:destroy]
+  resources :user_liked_patterns, only: [:destroy]
 end

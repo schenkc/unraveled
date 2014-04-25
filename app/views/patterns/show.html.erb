@@ -22,7 +22,7 @@
   </form>
 <% else %>
 
-  <form action="<%= pattern_libraries_url(@pattern) %>" method="post">
+  <form action="<%= pattern_user_liked_patterns_url(@pattern) %>" method="post">
     <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
     <input type="submit" value="Add to Library">
   </form>

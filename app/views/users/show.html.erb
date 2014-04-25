@@ -24,7 +24,14 @@
       <h2>Patterns in your library</h2>
       <ul>
         <% @library.each do |pattern| %>
-        <li><a href="<%= pattern_url(pattern) %>">Photo place holder-- <%= pattern.name %></a></li>
+        <li>
+          <a href="<%= pattern_url(pattern) %>">Photo place holder-- <%= pattern.name %></a>
+        <form action="<%= user_liked_pattern_url() %>" method="post">
+            <input type="hidden" name="_method" value="delete">
+          <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+          <input type="submit" value="Remove pattern">
+        </form>
+        </li>
         <% end %>
       </ul>
     <% end %>
