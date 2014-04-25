@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140424154121) do
+ActiveRecord::Schema.define(version: 20140425183648) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,14 @@ ActiveRecord::Schema.define(version: 20140424154121) do
   add_index "patterns", ["category"], name: "index_patterns_on_category", using: :btree
   add_index "patterns", ["designer_id"], name: "index_patterns_on_designer_id", using: :btree
   add_index "patterns", ["name"], name: "index_patterns_on_name", using: :btree
+
+  create_table "pg_search_documents", force: true do |t|
+    t.text     "content"
+    t.integer  "searchable_id"
+    t.string   "searchable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "tags", force: true do |t|
     t.string   "name"

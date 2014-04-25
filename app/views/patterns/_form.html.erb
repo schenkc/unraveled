@@ -37,7 +37,7 @@
     <input type="text" name="tag[name]" value="<%= @tags.map { |tag| tag.name }.join(', ') if @tags %>">
 
     <label for="pattern_source">Where does this pattern live?</label>
-    <input type="url" name="pattern[url]" value="<%= pattern.url || "http://" %>">
+    <input type="url" name="pattern[url]" value="<%= pattern.url %>">
     or
     <label for="pattern_pdf">Pattern pdf</label>
       <input type="file" name="pattern[instruction]">

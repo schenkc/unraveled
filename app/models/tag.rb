@@ -1,5 +1,8 @@
 class Tag < ActiveRecord::Base
 
+  include PgSearch
+  multisearchable :against => :name
+
   has_many(
     :pattern_tags,
     class_name: "PatternTag",

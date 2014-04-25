@@ -10,6 +10,7 @@ end
 class User < ActiveRecord::Base
 
   include PgSearch
+  multisearchable :against => [:email]
 
   attr_reader :password
   validates :email, :session_token, :activation_token, presence: true, uniqueness: true
@@ -25,23 +26,24 @@ class User < ActiveRecord::Base
     :designs,
     class_name: "Pattern",
     foreign_key: :designer_id,
-    primary_key: :id
+    primary_key: :id,
+    dependent: :destroy
   )
 
   has_many(
     :user_patterns,
     class_name: "UserLikedPattern",
     foreign_key: :owner_id,
-    primary_key: :id
+    primary_key: :id,
+    dependent: :destroy
   )
 
   has_many(
     :liked_patterns,
     through: :user_patterns,
-    source: :pattern
+    source: :pattern,
+    dependent: :destroy
   )
-
-  has_many :tags, as: :taggable
 
   def self.find_by_credentials(email, secret)
     user = User.find_by(email: email)

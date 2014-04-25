@@ -1,6 +1,10 @@
 class Pattern < ActiveRecord::Base
 
   include PgSearch
+  multisearchable :against => [:name, :category, :yarn_name,
+      :yarn_weight, :stitch_col, :stitch_row, :swatch,
+      :swatch_stitch, :needles, :amount_yarn, :sizes,
+      :price, :notes, :instruction, :url]
 
   has_attached_file :instruction
   validates_attachment :instruction, content_type: { content_type: "application/pdf" }
@@ -17,7 +21,8 @@ class Pattern < ActiveRecord::Base
     :pattern_users,
     class_name: "UserLikedPattern",
     foreign_key: :pattern_id,
-    primary_key: :id
+    primary_key: :id,
+    dependent: :destroy
   )
 
   has_many(
@@ -31,7 +36,8 @@ class Pattern < ActiveRecord::Base
     class_name: "PatternTag",
     foreign_key: :pattern_id,
     primary_key: :id,
-    inverse_of: :pattern
+    inverse_of: :pattern,
+    dependent: :destroy
   )
 
   has_many(
@@ -39,5 +45,5 @@ class Pattern < ActiveRecord::Base
     through: :pattern_tags,
     source: :tag
   )
-  accepts_nested_attributes_for :tags
+
 end

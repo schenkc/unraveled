@@ -56,6 +56,11 @@ before_filter :require_signed_in!
     render :pdf
   end
 
+  def download_pdf
+    pattern = Pattern.find(params[:id])
+    send_file(pattern.instruction.url, filename: pattern.instruction_file_name, type: "application/pdf")
+  end
+
   private
 
   def pattern_params
