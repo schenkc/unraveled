@@ -46,4 +46,6 @@ class Pattern < ActiveRecord::Base
     source: :tag
   )
 
+  has_many :pictures, as: :imageable
+
 end

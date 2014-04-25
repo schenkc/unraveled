@@ -22,15 +22,15 @@
       <li><a href="#">Favorites</a></li> -->
       <li><a href="<%= edit_user_url(current_user) %>">Edit profile</a></li>
       <li>
-        <form action="<%=  %>" method="get">
+        <form action="/search" method="get">
           <input type="text" value="<%= params[:query] %>">
           <input type="submit" value="Search">
         </form>
       </li>
 
     </ul>
-    
-   
+
+
 
   <form action="<%= session_url %>" method="post">
       <input type="hidden" name="_method" value="delete">

@@ -9,6 +9,11 @@
     <% @pattern.attributes.each do |key, value| %>
       <li><%= key %> : <%= value%></li>
     <% end %>
+    <% if @pattern.pictures %>
+      <% @pattern.pictures.each do |picture| %>
+        <li><img src="<%= picture.image.url(:thumb) %>"></li>
+      <% end %>
+    <% end %>
   </ul>
 </section>
 

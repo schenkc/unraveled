@@ -11,7 +11,7 @@ before_filter :require_signed_in!
     @pattern = Pattern.new(pattern_params)
     @pattern.designer_id = current_user.id
     make_tags(tag_names)
-
+    add_photos(params[:picture][:images])
     if @pattern.save
       redirect_to pattern_url(@pattern)
     else
@@ -36,6 +36,7 @@ before_filter :require_signed_in!
     @pattern = Pattern.find(params[:id])
     @pattern.update(pattern_params)
     make_tags(tag_names)
+    add_photos(params[:picture][:images])
     render :show
   end
 
@@ -56,9 +57,9 @@ before_filter :require_signed_in!
     render :pdf
   end
 
-  def download_pdf
-    pattern = Pattern.find(params[:id])
-    send_file(pattern.instruction.url, filename: pattern.instruction_file_name, type: "application/pdf")
+  def search
+    search = PgSearch.multisearch(params[:query])
+    render :index
   end
 
   private
@@ -75,12 +76,13 @@ before_filter :require_signed_in!
   end
 
   def make_tags(array)
-    tags = array.map do |tag_name|
+    @pattern.tags = array.map do |tag_name|
       Tag.find_or_create_by(name: tag_name)
     end
-    tags.each do |tag|
-      @pattern.tags << tag unless @pattern.tags.find_by(name: tag.name)
-    end
+  end
+
+  def add_photos(array)
+    @pattern.pictures = array.map { |image| Picture.create(image: image) }
   end
 
 end

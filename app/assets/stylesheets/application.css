@@ -78,13 +78,17 @@ nav.nav-bar {
   border-bottom: 1px solid black;
 }
 
+nav.nav-bar ul {
+  float: left;
+
+}
+
 nav.nav-bar li {
   float: left;
   padding: 10px;
 }
 
 .nav-bar > form {
-  padding: 5px;
   float: right;
 }
 
@@ -98,11 +102,6 @@ article {
   border-right: 1px solid black;
 }
 
-form {
-  width: 300px;
-  padding: 20px;
-  margin: auto;
-}
 
 label {
   display: block;

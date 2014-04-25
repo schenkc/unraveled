@@ -12,7 +12,7 @@ Unraveled::Application.routes.draw do
 
   resources :tags, only: [:create]
   get 'patterns/:id/pdf' => 'patterns#pdf'
-  get 'patterns/:id/download' => 'patterns#download_pdf'
+  get 'search' => 'patterns#search'
 
 
 end
