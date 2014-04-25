@@ -11,10 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140423183324) do
+ActiveRecord::Schema.define(version: 20140424154121) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "pattern_tags", force: true do |t|
+    t.integer  "tag_id"
+    t.integer  "pattern_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "patterns", force: true do |t|
     t.string   "name"
@@ -33,11 +40,22 @@ ActiveRecord::Schema.define(version: 20140423183324) do
     t.text     "notes"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "instruction_file_name"
+    t.string   "instruction_content_type"
+    t.integer  "instruction_file_size"
+    t.datetime "instruction_updated_at"
+    t.string   "url"
   end
 
   add_index "patterns", ["category"], name: "index_patterns_on_category", using: :btree
   add_index "patterns", ["designer_id"], name: "index_patterns_on_designer_id", using: :btree
   add_index "patterns", ["name"], name: "index_patterns_on_name", using: :btree
+
+  create_table "tags", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "user_liked_patterns", force: true do |t|
     t.integer  "pattern_id"

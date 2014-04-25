@@ -9,4 +9,8 @@ Unraveled::Application.routes.draw do
     resources :user_liked_patterns, only: [:create]
   end
   resources :user_liked_patterns, only: [:destroy]
+
+  resources :tags, only: [:create]
+  get 'patterns/:id/pdf' => 'patterns#pdf'
+
 end

@@ -14,7 +14,7 @@
 
 /* resets */
 
-h1, h2, h3, body, section, div, button, a, label, form, li, ul, nav {
+h1, h2, h3, body, section, div, button, a, label, form, li, ul, nav, article, form {
   padding: 0;
   margin: 0;
   border: 0;
@@ -83,6 +83,22 @@ nav.nav-bar a {
   padding: 10px;
 }
 
+.nav-bar input[type="submit"] {
+  float: left;
+}
+
 h1 {
   font-size: 30px;
+}
+
+article {
+  float: left;
+}
+
+form {
+  width: 300px;
+}
+
+label {
+  display: block;
 }

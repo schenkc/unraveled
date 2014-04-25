@@ -9,6 +9,8 @@ end
 
 class User < ActiveRecord::Base
 
+  include PgSearch
+
   attr_reader :password
   validates :email, :session_token, :activation_token, presence: true, uniqueness: true
   validates :password_digest, presence: true
@@ -38,6 +40,8 @@ class User < ActiveRecord::Base
     through: :user_patterns,
     source: :pattern
   )
+
+  has_many :tags, as: :taggable
 
   def self.find_by_credentials(email, secret)
     user = User.find_by(email: email)

@@ -20,7 +20,7 @@
     <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
     <input type="submit" value="Forget this pattern">
   </form>
-<% else %>
+<% elsif !@pattern.fans.include?(current_user) %>
 
   <form action="<%= pattern_user_liked_patterns_url(@pattern) %>" method="post">
     <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">

@@ -1,5 +1,7 @@
 class PatternsController < ApplicationController
 
+before_filter :require_signed_in!
+
   def new
     @pattern = Pattern.new
     render :new
@@ -8,28 +10,32 @@ class PatternsController < ApplicationController
   def create
     @pattern = Pattern.new(pattern_params)
     @pattern.designer_id = current_user.id
+    make_tags(tag_names)
 
-    if @pattern.save
+    if @pattern.save && @tags.save
       redirect_to pattern_url(@pattern)
     else
       flash.now[:errors] = @patterns.errors.full_messages
+      # flash.now[:errors] << @tags.errors.full_messages
       render :new
     end
   end
 
   def index
-    @patterns = Pattern.all
+    @patterns = Pattern.includes(:tags)
     render :index
   end
 
   def edit
     @pattern = Pattern.find(params[:id])
+    @tags = @pattern.tags
     render :edit
   end
 
   def update
     @pattern = Pattern.find(params[:id])
     @pattern.update(pattern_params)
+    make_tags(tag_names)
     render :show
   end
 
@@ -45,11 +51,29 @@ class PatternsController < ApplicationController
     render :show
   end
 
+  def pdf
+    @pattern = Pattern.find(params[:id])
+    render :pdf
+  end
+
   private
 
   def pattern_params
-    params.require(:pattern).permit(:name, :category, :yarn_name, :yarn_weight, :stitch_col,
-      :stitch_row, :swatch, :swatch_stitch, :needles, :amount_yarn, :sizes, :price, :notes)
+    params.require(:pattern).permit(:name, :category, :yarn_name,
+      :yarn_weight, :stitch_col, :stitch_row, :swatch,
+      :swatch_stitch, :needles, :amount_yarn, :sizes,
+      :price, :notes, :instruction)
+  end
+
+  def tag_names
+    params.require(:tag).permit(:name)[:name].split(",").map(&:strip)
+  end
+
+  def make_tags(array)
+    tags = array.map do |tag_name|
+      Tag.find_or_create_by(name: tag_name)
+    end
+    @pattern.tags << tags
   end
 
 end

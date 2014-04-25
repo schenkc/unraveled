@@ -13,13 +13,22 @@
     <ul>
       <li><a href="<%= patterns_url %>">Patterns</a></li>
       <li><a href="<%= user_url(current_user) %>">Library</a></li>
-      <li><a href="#">Friends</a></li>
+      <!-- <li><a href="#">Friends</a></li>
       <li><a href="#">Messages</a></li>
       <li><a href="#">Projects</a></li>
       <li><a href="#">Queue</a></li>
       <li><a href="#">Favorites</a></li>
       <li><a href="<%= edit_user_url(current_user) %>">Edit Profile</a></li>
+=======
+      <li><a href="#">Favorites</a></li> -->
+      <li><a href="<%= edit_user_url(current_user) %>">Edit profile</a></li>
+
     </ul>
+
+    <form action="<%= search_url %>" method="get">
+      <input type="text" value="<%= params[:query] %>">
+      <input type="submit" value="Search">
+    </form>
 
   <form action="<%= session_url %>" method="post">
       <input type="hidden" name="_method" value="delete">

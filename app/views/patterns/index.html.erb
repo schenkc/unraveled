@@ -2,6 +2,17 @@
 
 <ul>
   <% @patterns.each do |pattern| %>
-    <li><a href="<%= pattern_url(pattern) %>">Photo-- <%= pattern.name %> by <%= pattern.designer.email %></li>
+    <li>
+      <a href="<%= pattern_url(pattern) %>">
+        Photo-- <%= pattern.name %> by <%= pattern.designer.email %>
+      </a>
+      <% pattern.tags.each do |tag| %>
+        <ul>
+          <li>
+            <%= tag.name %>
+          </li>
+        </ul>
+      <% end %>
+    </li>
   <% end %>
 </ul>
