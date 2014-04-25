@@ -12,7 +12,7 @@ before_filter :require_signed_in!
     @pattern.designer_id = current_user.id
     make_tags(tag_names)
 
-    if @pattern.save && @tags.save
+    if @pattern.save
       redirect_to pattern_url(@pattern)
     else
       flash.now[:errors] = @patterns.errors.full_messages
@@ -62,7 +62,7 @@ before_filter :require_signed_in!
     params.require(:pattern).permit(:name, :category, :yarn_name,
       :yarn_weight, :stitch_col, :stitch_row, :swatch,
       :swatch_stitch, :needles, :amount_yarn, :sizes,
-      :price, :notes, :instruction)
+      :price, :notes, :instruction, :url, tags_attributes: [:id, :name])
   end
 
   def tag_names
@@ -73,7 +73,9 @@ before_filter :require_signed_in!
     tags = array.map do |tag_name|
       Tag.find_or_create_by(name: tag_name)
     end
-    @pattern.tags << tags
+    tags.each do |tag|
+      @pattern.tags << tag unless @pattern.tags.find_by(name: tag.name)
+    end
   end
 
 end

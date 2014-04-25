@@ -19,16 +19,18 @@
       <li><a href="#">Queue</a></li>
       <li><a href="#">Favorites</a></li>
       <li><a href="<%= edit_user_url(current_user) %>">Edit Profile</a></li>
-=======
       <li><a href="#">Favorites</a></li> -->
       <li><a href="<%= edit_user_url(current_user) %>">Edit profile</a></li>
+      <li>
+        <form action="<%=  %>" method="get">
+          <input type="text" value="<%= params[:query] %>">
+          <input type="submit" value="Search">
+        </form>
+      </li>
 
     </ul>
-
-    <form action="<%= search_url %>" method="get">
-      <input type="text" value="<%= params[:query] %>">
-      <input type="submit" value="Search">
-    </form>
+    
+   
 
   <form action="<%= session_url %>" method="post">
       <input type="hidden" name="_method" value="delete">

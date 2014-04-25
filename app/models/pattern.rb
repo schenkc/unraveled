@@ -39,5 +39,5 @@ class Pattern < ActiveRecord::Base
     through: :pattern_tags,
     source: :tag
   )
-
+  accepts_nested_attributes_for :tags
 end

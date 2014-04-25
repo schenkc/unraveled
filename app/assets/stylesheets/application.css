@@ -78,13 +78,14 @@ nav.nav-bar {
   border: 3px solid black;
 }
 
-nav.nav-bar a {
+nav.nav-bar li {
   float: left;
   padding: 10px;
 }
 
-.nav-bar input[type="submit"] {
-  float: left;
+.nav-bar > form {
+  padding: 10px;
+  float: right;
 }
 
 h1 {
@@ -93,10 +94,14 @@ h1 {
 
 article {
   float: left;
+  padding: 20px;
+  border-right: 1px solid black;
 }
 
 form {
   width: 300px;
+  padding: 20px;
+  margin: auto;
 }
 
 label {
