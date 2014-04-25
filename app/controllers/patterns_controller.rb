@@ -82,7 +82,7 @@ before_filter :require_signed_in!
   end
 
   def add_photos(array)
-    @pattern.pictures = array.map { |image| Picture.create(image: image) }
+    @pattern.pictures = array.map { |image| Picture.create(image: image) } unless array
   end
 
 end
