@@ -15,6 +15,7 @@
       <% end %>
     <% end %>
   </ul>
+  Tags: <%= @pattern.tags.map(&:name).join(', ') %>
 </section>
 
 <% if current_user.id == @pattern.designer_id %>
