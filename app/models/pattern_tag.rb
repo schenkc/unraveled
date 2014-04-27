@@ -7,8 +7,7 @@ class PatternTag < ActiveRecord::Base
     class_name: "Tag",
     foreign_key: :tag_id,
     primary_key: :id,
-    inverse_of: :pattern_tags,
-    dependent: :destroy
+    inverse_of: :pattern_tags
   )
 
   belongs_to(
@@ -16,8 +15,7 @@ class PatternTag < ActiveRecord::Base
     class_name: "Pattern",
     foreign_key: :pattern_id,
     primary_key: :id,
-    inverse_of: :pattern_tags,
-    dependent: :destroy
+    inverse_of: :pattern_tags
   )
 
 end

@@ -4,7 +4,7 @@ class Pattern < ActiveRecord::Base
   multisearchable :against => [:name, :category, :yarn_name,
       :yarn_weight, :stitch_col, :stitch_row, :swatch,
       :swatch_stitch, :needles, :amount_yarn, :sizes,
-      :price, :notes, :instruction, :url]
+      :price, :notes, :url]
 
   has_attached_file :instruction
   validates_attachment :instruction, content_type: { content_type: "application/pdf" }
