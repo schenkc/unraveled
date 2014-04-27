@@ -1,4 +1,4 @@
-<article>
+<article class="pattern-listing">
   <h1>All the patterns</h1>
 
   <ul>
@@ -17,4 +17,19 @@
       </li>
     <% end %>
   </ul>
+</article>
+
+<article class="user-search">
+  <% unless @display_users.empty? %>
+  <h1>Users</h1>
+    <ul>
+      <% @display_users.each do |user| %>
+      <li>
+        <a href="<%= user_url(user) %>">
+          <%= user.email %>
+        </a>
+      </li>
+      <% end %>
+    </ul>
+  <% end %>
 </article>

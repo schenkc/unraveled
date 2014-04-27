@@ -23,6 +23,7 @@ before_filter :require_signed_in!
 
   def index
     @patterns = Pattern.includes(:tags)
+    @display_users = []
     render :index
   end
 
@@ -59,8 +60,18 @@ before_filter :require_signed_in!
 
   def search
     results = PgSearch.multisearch(params[:query])
+    @patterns = []
+    @display_users = []
     if results
-      @patterns = results.map { |r| Pattern.find(r.searchable_id) }
+      results.each do |result|
+        if result.searchable_type == "Tag"
+          @patterns += result.searchable.patterns
+        elsif result.searchable_type == "User"
+          @display_users << result.searchable
+        elsif result.searchable_type == "Pattern"
+          @patterns << result.searchable
+        end
+      end
     end
     render :index
   end
