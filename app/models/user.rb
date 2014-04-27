@@ -13,11 +13,14 @@ class User < ActiveRecord::Base
   multisearchable :against => [:email]
 
   attr_reader :password
+  attr_reader :password_confirmation
   validates :email, :session_token, :activation_token, presence: true, uniqueness: true
   validates :password_digest, presence: true
-  validates :password, length: { minimum: 6, allow_nil: true }
-  before_validation :ensure_session_token, only: [:create]
-  before_validation :ensure_activation_token, only: [:create]
+  validates :password, length: { minimum: 6, allow_nil: true }, confirmation: true
+  before_validation :ensure_session_token, on: [:create]
+  before_validation :ensure_activation_token, on: [:create]
+  # before_validation :password_confirmation, presence: true, on: [:create]
+  validates_confirmation_of :password
 
   has_attached_file :avatar, styles: { thumb: "100x100>" }, :default_url => "/images/:style/missing.png"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\z/
