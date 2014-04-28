@@ -11,22 +11,50 @@
 <nav class="nav-bar group">
   <% if current_user %>
     <ul>
-      <li><a href="<%= patterns_url %>">Patterns</a></li>
-      <li><a href="<%= user_url(current_user) %>">Library</a></li>
-      <li><a href="<%= users_url %>">Everyone</a></li>
+      <li>
+        <a href="<%= patterns_url %>">
+          Patterns
+        </a>
+      </li>
+      <li>
+        <a href="<%= user_url(current_user) %>">
+          Library
+        </a>
+      </li>
+      <li>
+        <a href="<%= users_url %>">
+          Everyone
+        </a>
+      </li>
       <!-- <li><a href="#">Messages</a></li>
       <li><a href="#">Projects</a></li>
       <li><a href="#">Queue</a></li>
       <li><a href="#">Favorites</a></li>
       <li><a href="<%= edit_user_url(current_user) %>">Edit Profile</a></li>
       <li><a href="#">Favorites</a></li> -->
-      <li><a href="<%= edit_user_url(current_user) %>">Edit profile</a></li>
+      <li>
+        <a href="<%= edit_user_url(current_user) %>">
+          Edit profile
+        </a>
+      </li>
       <li>
         <form action="/search" method="get">
           <input type="text" name="query" value="<%= params[:query] %>">
           <input type="submit" value="Search">
         </form>
       </li>
+      <li>
+        <a href="<%= notifications_url %>">
+          Notifications
+        </a>
+        <% unless current_user.notifications.empty? %>
+          <strong><%= current_user.notifications.unread.size %></strong>
+          <ul>
+            <%= render partial: "notifications/notifications", collection: current_user.notifications.unread %>
+          </ul>
+        <% end %>
+      </li>
+
 
     </ul>
 
@@ -48,9 +76,13 @@
 
 <section class="content">
   <% if flash.now[:errors] %>
+  <ul>
     <% flash.now[:errors].each do |error| %>
-      <%= error %><br>
+      <li>
+        <%= error %>
+      </li>
     <% end %>
+  </ul>
   <% end %>
 
   <%= yield %>

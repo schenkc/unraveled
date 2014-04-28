@@ -10,8 +10,6 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 6, allow_nil: true }, confirmation: true
   before_validation :ensure_session_token, on: [:create]
   before_validation :ensure_activation_token, on: [:create]
-  # before_validation :password_confirmation, presence: true, on: [:create]
-  # validates_confirmation_of :password
 
   has_attached_file :avatar, styles: { thumb: "100x100>" }, :default_url => "/images/:style/missing.png"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\z/
@@ -54,10 +52,10 @@ class User < ActiveRecord::Base
   )
 
   has_many(
-  :leader_entries,
-  class_name: "Follower",
-  foreign_key: :leader_id,
-  primary_key: :id
+    :leader_entries,
+    class_name: "Follower",
+    foreign_key: :leader_id,
+    primary_key: :id
   )
 
   has_many(
@@ -67,6 +65,14 @@ class User < ActiveRecord::Base
     dependent: :destroy
   )
 
+  has_many(
+    :notifications,
+    class_name: "Notification",
+    foreign_key: :user_id,
+    primary_key: :id,
+    inverse_of: :user,
+    dependent: :destroy
+  )
 
   def self.find_by_credentials(email, secret)
     user = User.find_by(email: email)
