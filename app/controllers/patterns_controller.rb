@@ -22,8 +22,7 @@ before_filter :require_signed_in!
   end
 
   def index
-    @patterns = Pattern.includes(:tags)
-    @display_users = []
+    @patterns ||= Pattern.includes(:tags).page(params[:page])
     render :index
   end
 
@@ -73,8 +72,11 @@ before_filter :require_signed_in!
         end
       end
     end
+    @patterns = Kaminari.paginate_array(@patterns).page(params[:page])
+    @display_users = Kaminari.paginate_array(@display_users).page(params[:page])
     render :index
   end
+
 
   private
 

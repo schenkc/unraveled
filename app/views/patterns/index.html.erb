@@ -14,10 +14,11 @@
       </li>
     <% end %>
   </ul>
+  <%= paginate @patterns %>
 </article>
 
 <article class="user-search">
-  <% unless @display_users.empty? %>
+  <% if @display_users %>
   <h1>Users</h1>
     <ul>
       <% @display_users.each do |user| %>
@@ -28,5 +29,7 @@
       </li>
       <% end %>
     </ul>
+    <%= paginate @display_users %>
   <% end %>
 </article>
+
