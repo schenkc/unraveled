@@ -1,0 +1,15 @@
+<h1>Everyone!</h1>
+
+<article class="user-search">
+    <ul>
+      <% @users.each do |user| %>
+      <li>
+        <a href="<%= user_url(user) %>">
+          <img src="<%= user.avatar.url(:thumb) %>">
+          <%= user.name ? user.name : user.email %>
+        </a>
+      </li>
+      <% end %>
+    </ul>
+    <%= paginate @users %>
+</article>

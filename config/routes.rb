@@ -1,7 +1,7 @@
 Unraveled::Application.routes.draw do
   get 'users/activate' => 'users#activate_user'
   root to: 'sessions#new'
-  resources :users, only: [:new, :create, :show, :edit, :update] do
+  resources :users, only: [:new, :create, :show, :edit, :update, :index] do
     resources :patterns, only: [:index]
     resources :followers, only: [:create, :destroy]
   end
@@ -12,7 +12,7 @@ Unraveled::Application.routes.draw do
   resources :user_liked_patterns, only: [:destroy]
 
   resources :tags, only: [:create]
-  
+
   get 'patterns/:id/pdf' => 'patterns#pdf'
   get 'search' => 'patterns#search'
 

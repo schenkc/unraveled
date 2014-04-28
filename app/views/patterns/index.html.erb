@@ -24,6 +24,7 @@
       <% @display_users.each do |user| %>
       <li>
         <a href="<%= user_url(user) %>">
+          <img src="<%= user.avatar.url(:thumb) %>">
           <%= user.email %>
         </a>
       </li>
