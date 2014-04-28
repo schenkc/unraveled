@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
   before_validation :ensure_session_token, on: [:create]
   before_validation :ensure_activation_token, on: [:create]
   # before_validation :password_confirmation, presence: true, on: [:create]
-  validates_confirmation_of :password
+  # validates_confirmation_of :password
 
   has_attached_file :avatar, styles: { thumb: "100x100>" }, :default_url => "/images/:style/missing.png"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\z/
@@ -97,6 +97,7 @@ class User < ActiveRecord::Base
   end
 
   def password=(password)
+    @password = password
     self.password_digest = BCrypt::Password.create(password)
   end
 

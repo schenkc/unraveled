@@ -9,6 +9,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    fail
 
     if @user.save
       UserMailer.welcome_email(@user).deliver!
