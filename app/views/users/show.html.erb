@@ -7,3 +7,13 @@
   <%= render "pub_show", locals: {library: @library, patterns: @patterns, user: @user} %>
   
 <% end %>
+
+<p>This shouldn't be here, but it should be here.  Or something.  This is officially a mess.</p>
+<% if @followers %>
+<h3>People you enjoy</h3>
+  <% @followers.each do |user| %>
+    <a href="<%= user_url(user) %>">
+      <%= user.name ? user.name : user.email %>
+    </a>
+  <% end %>
+<% end %>

@@ -1,16 +1,20 @@
 class Follower < ActiveRecord::Base
   
+  validates :leader_id, :follower_id, presence: true
+  validates_uniqueness_of :leader_id, scope: :follower_id
+  
   belongs_to(
     :leader,
     class_name: "User",
-    foreign_key: :follower_id,
+    foreign_key: :leader_id,
     primary_key: :id
   )
   
   belongs_to(
     :follower,
     class_name: "User",
-    foreign_key: :leader_id,
+    foreign_key: :follower_id,
     primary_key: :id
   )
+  
 end

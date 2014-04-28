@@ -3,6 +3,7 @@ Unraveled::Application.routes.draw do
   root to: 'sessions#new'
   resources :users, only: [:new, :create, :show, :edit, :update] do
     resources :patterns, only: [:index]
+    resources :followers, only: [:create]
   end
   resource :session, only: [:new, :create, :destroy]
   resources :patterns do
