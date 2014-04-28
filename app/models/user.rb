@@ -1,12 +1,3 @@
-class ActiveRecord::Base
-  def self.generate_unique_token_for(field)
-    begin
-      token = SecureRandom.base64(16)
-    end until !self.exists?(field => token)
-    token
-  end
-end
-
 class User < ActiveRecord::Base
 
   include PgSearch
@@ -47,35 +38,35 @@ class User < ActiveRecord::Base
     source: :pattern,
     dependent: :destroy
   )
-  
+
   has_many(
     :follower_entries,
     class_name: "Follower",
     foreign_key: :follower_id,
     primary_key: :id
   )
-  
+
   has_many(
     :leaders,
     through: :follower_entries,
     source: :leader,
     dependent: :destroy
   )
-  
+
   has_many(
   :leader_entries,
   class_name: "Follower",
   foreign_key: :leader_id,
   primary_key: :id
   )
-  
+
   has_many(
     :followers,
     through: :leader_entries,
     source: :follower,
     dependent: :destroy
   )
-  
+
 
   def self.find_by_credentials(email, secret)
     user = User.find_by(email: email)
@@ -84,6 +75,13 @@ class User < ActiveRecord::Base
     else
       nil
     end
+  end
+
+  def self.generate_unique_token_for(field)
+    begin
+      token = SecureRandom.base64(16)
+    end until !self.exists?(field => token)
+    token
   end
 
   def self.generate_session_token

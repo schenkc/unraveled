@@ -5,7 +5,10 @@
     <% @patterns.each do |pattern| %>
       <li>
         <a href="<%= pattern_url(pattern) %>">
-          <img src="<%= pattern.pictures.first.image.url(:thumb) if pattern.pictures.first %>"><%= pattern.name %> by <%= pattern.designer.email %>
+          <img src="<%= pattern.pictures.first.image.url(:thumb) if pattern.pictures.first %>"><%= pattern.name %>
+        </a> by
+        <a href="<%= user_url(pattern.designer) %>">
+          <%= pattern.designer.email %>
         </a>
         <%= pattern.tags.map(&:name).join(', ') %>
       </li>

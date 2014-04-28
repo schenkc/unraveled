@@ -2,21 +2,23 @@
 <img src="<%= @user.avatar.url(:thumb) %>">
 
 <section class="group">
-  <p>Isn't <%= @user.name ? @user.name : @user.email %> just great?  Want to know their every move on unraveled?  The button below should switch if @user is already following. 
-    
-    <% if @user.leaders.include?(current_user) %>
+
+
+    <% if @user.followers.includes(current_user).count != 0 %>
       <form action="<%= user_follower_url(current_user, @user)%>" method="post">
         <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
         <input type="hidden" name="_method" value="delete">
         <input type="submit" value="Unfollow">
     <% else %>
+    <p>Isn't <%= @user.name ? @user.name : @user.email %> just great?
+      Want to know their every move on unraveled?</p>
       <form action="<%= user_followers_url(@user) %>" method="post">
         <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
         <input type="submit" value="Follow">
       </form>
     <% end %>
   </p>
-  
+
   <article class="patterns">
     <% if @patterns %>
     <h2>Patterns <%= @user.name %> has made</h2>
@@ -46,14 +48,14 @@
           <a href="<%= pattern_url(pattern) %>">
             <img src="<%= pattern.pictures.first.image.url(:thumb) if pattern.pictures.first %>"><%= pattern.name %>
           </a>
-          
+
           <form action="<%= pattern_user_liked_patterns_url(pattern) %>" method="post">
             <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
             <input type="submit" value="Add to your Library">
-            
+
             This button needs to be tested still.
 
-          
+
         </li>
         <% end %>
 

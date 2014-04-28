@@ -9,7 +9,6 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    fail
 
     if @user.save
       UserMailer.welcome_email(@user).deliver!
@@ -34,7 +33,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    current_user.update(user_params)
+    current_user.update(user_params) if current_user.id.to_s == params[:id]
     redirect_to user_url(current_user)
   end
 
@@ -44,6 +43,9 @@ class UsersController < ApplicationController
     @user.save
     login_user!(@user)
     redirect_to edit_user_url(@user)
+  end
+
+  def password_recovery
   end
 
   private
