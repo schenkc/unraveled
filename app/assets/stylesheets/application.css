@@ -41,7 +41,7 @@ textarea {
   color: inherit;
 }
 
-li {
+ul {
   list-style: none;
 }
 
@@ -72,10 +72,13 @@ input[type="password"],
 input[type="submit"],
 textarea {
   background: white;
+  font: inherit;
 }
 
 nav.nav-bar {
   border-bottom: 1px solid black;
+  width: 900px;
+  margin: auto;
 }
 
 nav.nav-bar ul {
@@ -92,16 +95,31 @@ nav.nav-bar li {
   float: right;
 }
 
+.nav-bar submit {
+  padding: 10px;
+  margin: 10px;
+}
+
 h1 {
   font-size: 30px;
 }
 
 article {
   float: left;
+  border-left: 1px solid black;
+  width: 409px;
   padding: 20px;
-  border-right: 1px solid black;
+}
+
+article > img {
+  display: block;
 }
 
 label {
   display: block;
+}
+
+section.content {
+  width: 900px;
+  margin: auto;
 }

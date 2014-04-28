@@ -1,0 +1,49 @@
+<h1><%= @user.name %>'s profile</h1>
+<img src="<%= @user.avatar.url(:thumb) %>">
+
+<section class="group">
+  <article class="patterns">
+    <% if @patterns %>
+    <h2>Patterns <%= @user.name %> has made</h2>
+    <ul>
+      <% @patterns.each do |pattern| %>
+      <li>
+        <a href="<%= pattern_url(pattern) %>">
+          <img src="<%= pattern.pictures.first.image.url(:thumb) if pattern.pictures.first %>"><%= pattern.name %>
+        </a>
+        <form action="<%= pattern_user_liked_patterns_url(pattern) %>" method="post">
+          <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+          <input type="submit" value="Add to your Library">
+      </li>
+      <% end %>
+    </ul>
+    <% end %>
+  </article>
+
+  <article class="library">
+
+    <% if @library %>
+      <h2>Patterns in <%= @user.name %>'s library</h2>
+      <ul>
+        <% @library.each do |pattern| %>
+        <li>
+
+          <a href="<%= pattern_url(pattern) %>">
+            <img src="<%= pattern.pictures.first.image.url(:thumb) if pattern.pictures.first %>"><%= pattern.name %>
+          </a>
+          
+          <form action="<%= pattern_user_liked_patterns_url(pattern) %>" method="post">
+            <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+            <input type="submit" value="Add to your Library">
+            
+            This button needs to be tested still.
+
+          
+        </li>
+        <% end %>
+
+      </ul>
+    <% end %>
+
+  </article>
+</section>

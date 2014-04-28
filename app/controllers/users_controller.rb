@@ -27,11 +27,12 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = current_user
     render :edit
   end
 
   def update
-    current_user.update(avatar: params[:user][:avatar])
+    current_user.update(user_params)
     redirect_to user_url(current_user)
   end
 
@@ -40,12 +41,12 @@ class UsersController < ApplicationController
     @user.activate = true
     @user.save
     login_user!(@user)
-    redirect_to user_url(@user)
+    redirect_to edit_user_url(@user)
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation)
+    params.require(:user).permit(:email, :password, :password_confirmation, :name, :bio, :avatar)
   end
 end

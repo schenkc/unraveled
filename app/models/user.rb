@@ -10,7 +10,7 @@ end
 class User < ActiveRecord::Base
 
   include PgSearch
-  multisearchable :against => [:email]
+  multisearchable :against => [:email, :name]
 
   attr_reader :password
   attr_reader :password_confirmation
@@ -47,6 +47,35 @@ class User < ActiveRecord::Base
     source: :pattern,
     dependent: :destroy
   )
+  
+  has_many(
+    :followers_code,
+    class_name: "Follower",
+    foreign_key: :leader_id,
+    primary_key: :id
+  )
+  
+  has_many(
+    :followers,
+    through: :followers_code,
+    source: :follower,
+    dependent: :destroy
+  )
+  
+  has_many(
+  :leaders_code,
+  class_name: "Follower",
+  foreign_key: :follower_id,
+  primary_key: :id
+  )
+  
+  has_many(
+    :leaders,
+    through: :leaders_code,
+    source: :leader,
+    dependent: :destroy
+  )
+  
 
   def self.find_by_credentials(email, secret)
     user = User.find_by(email: email)
