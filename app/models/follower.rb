@@ -1,7 +1,7 @@
 class Follower < ActiveRecord::Base
   
   validates :leader_id, :follower_id, presence: true
-  validates_uniqueness_of :leader_id, scope: :follower_id
+  validates_uniqueness_of :follower_id, scope: :leader_id
   
   belongs_to(
     :leader,

@@ -3,7 +3,7 @@ Unraveled::Application.routes.draw do
   root to: 'sessions#new'
   resources :users, only: [:new, :create, :show, :edit, :update] do
     resources :patterns, only: [:index]
-    resources :followers, only: [:create]
+    resources :followers, only: [:create, :destroy]
   end
   resource :session, only: [:new, :create, :destroy]
   resources :patterns do
@@ -12,6 +12,7 @@ Unraveled::Application.routes.draw do
   resources :user_liked_patterns, only: [:destroy]
 
   resources :tags, only: [:create]
+  
   get 'patterns/:id/pdf' => 'patterns#pdf'
   get 'search' => 'patterns#search'
 

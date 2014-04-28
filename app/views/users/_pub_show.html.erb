@@ -3,10 +3,18 @@
 
 <section class="group">
   <p>Isn't <%= @user.name ? @user.name : @user.email %> just great?  Want to know their every move on unraveled?  The button below should switch if @user is already following. 
-    <form action="<%= user_followers_url(@user) %>" method="post">
-      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
-      <input type="submit" value="Click here">
-    </form>
+    
+    <% if @user.leaders.include?(current_user) %>
+      <form action="<%= user_follower_url(current_user, @user)%>" method="post">
+        <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+        <input type="hidden" name="_method" value="delete">
+        <input type="submit" value="Unfollow">
+    <% else %>
+      <form action="<%= user_followers_url(@user) %>" method="post">
+        <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+        <input type="submit" value="Follow">
+      </form>
+    <% end %>
   </p>
   
   <article class="patterns">

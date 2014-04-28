@@ -49,30 +49,30 @@ class User < ActiveRecord::Base
   )
   
   has_many(
-    :followers_code,
+    :follower_entries,
     class_name: "Follower",
-    foreign_key: :leader_id,
+    foreign_key: :follower_id,
     primary_key: :id
   )
   
   has_many(
-    :followers,
-    through: :followers_code,
-    source: :follower,
+    :leaders,
+    through: :follower_entries,
+    source: :leader,
     dependent: :destroy
   )
   
   has_many(
-  :leaders_code,
+  :leader_entries,
   class_name: "Follower",
-  foreign_key: :follower_id,
+  foreign_key: :leader_id,
   primary_key: :id
   )
   
   has_many(
-    :leaders,
-    through: :leaders_code,
-    source: :leader,
+    :followers,
+    through: :leader_entries,
+    source: :follower,
     dependent: :destroy
   )
   
