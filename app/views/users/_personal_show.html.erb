@@ -1,4 +1,4 @@
-<h1>Hey there <%= @user.name %></h1>
+<h1>Hey there <%= @user.name ? @user.name : @user.email %></h1>
 <% if current_user.avatar %>
   <img src="<%= current_user.avatar.url(:thumb) %>">
 <% else %>

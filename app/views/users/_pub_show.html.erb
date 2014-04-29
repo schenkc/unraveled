@@ -1,4 +1,4 @@
-<h1><%= @user.name %>'s profile</h1>
+<h1><%= @user.name ? @user.name : @user.email %>'s profile</h1>
 <img src="<%= @user.avatar.url(:thumb) %>">
 
 <section class="group">

@@ -1,0 +1,4 @@
+<h1>Notifications (<%= @notifications.size %>)</h1>
+
+<ul class="notifications">
+  <%= render partial: "notifications/notification", collection: @notifications %>

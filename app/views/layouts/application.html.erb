@@ -50,7 +50,7 @@
         <% unless current_user.notifications.empty? %>
           <strong><%= current_user.notifications.unread.size %></strong>
           <ul>
-            <%= render partial: "notifications/notifications", collection: current_user.notifications.unread %>
+            <%= render partial: "notifications/notification", collection: current_user.notifications.unread %>
           </ul>
         <% end %>
       </li>

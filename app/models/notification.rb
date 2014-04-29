@@ -22,7 +22,7 @@ class Notification < ActiveRecord::Base
     :notifiable,
     inverse_of: :notifications,
     polymorphic: true,
-    counter_cache: true
+    # counter_cache: true
   )
 
   validates :event_id, inclusion: { in: EVENTS.keys }
@@ -31,7 +31,7 @@ class Notification < ActiveRecord::Base
 
   scope :read, -> { where(is_read: true) }
   scope :unread, -> { where(is_read: false) }
-  scope :event, -> { where(event_id: EVENT_IDS[event_name]) }
+  scope :event, -> (event_name){ where(event_id: EVENT_IDS[event_name]) }
 
   def event_name
     EVENTS[self.event_id]
@@ -72,7 +72,7 @@ class Notification < ActiveRecord::Base
 
   def default_url_options
     options = {}
-    options[:host] = Rails.env.production? ? "oh_my_I_need_this" : "localhost:300"
+    options[:host] = Rails.env.production? ? "oh_my_I_need_this" : "localhost:3000"
     options
   end
 

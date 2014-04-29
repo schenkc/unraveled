@@ -7,6 +7,8 @@ class NotificationsController < ApplicationController
   end
 
   def index
+    @notifications = current_user.notifications
+    render :index
   end
 
 end
