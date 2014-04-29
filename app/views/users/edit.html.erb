@@ -1,24 +1,24 @@
-<h1>Edit your profile</h1>
+<h1 class="user-edit-header">Edit your profile</h1>
 
-  <form action="<%= user_url(current_user) %>" method="post" enctype="multipart/form-data">
+  <form class="user-edit" action="<%= user_url(current_user) %>" method="post" enctype="multipart/form-data">
     <input type="hidden" name="_method" value="patch">
     <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
     <label for="user-avatar">Profile picture</label>
     <input type="file" id="user-avatar" name="user[avatar]">
-    
+
     <label for="user-name">Name</label>
     <input type="text" id="user-name" name="user[name]" value="<%= @user.name %>">
-    
+
     <label for="user-bio">Tell me more!</label>
     <textarea id="user-bio" name="user[bio]"><%= @user.bio %></textarea>
-    
+
     <input type="submit" value="Update!">
-    
+
   </form>
-  
+
   I should have a change email, change password link here.  Use ActiveMailer and tokens to make this happen.
-  
-  <form action="<%= user_url(current_user) %>" method="post">
+
+  <form class="delete-user" action="<%= user_url(current_user) %>" method="post">
     <input type="hidden" name="_method" value="delete">
-    <input type="submit" value="Delete my account, and all my patterns">
+    <input type="submit" value="Delete my account and all my patterns">
   </form>

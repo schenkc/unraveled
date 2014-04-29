@@ -2,17 +2,29 @@
   <h1>All the patterns</h1>
 
   <ul>
+    <li>
     <% @patterns.each do |pattern| %>
-      <li>
-        <a href="<%= pattern_url(pattern) %>">
-          <img src="<%= pattern.pictures.first.image.url(:thumb) if pattern.pictures.first %>"><%= pattern.name %>
-        </a> by
-        <a href="<%= user_url(pattern.designer) %>">
-          <%= pattern.designer.email %>
-        </a>
-        <%= pattern.tags.map(&:name).join(', ') %>
-      </li>
+      <ul>
+        <li><a href="<%= pattern_url(pattern) %>">
+          <% if pattern.pictures.first %>
+            <img src="<%= pattern.pictures.first.image.url(:thumb) %>">
+          <% else %>
+            <img src="<%= asset_path "unraveled_default.png" %>">
+          <% end %>
+          <%= pattern.name %>
+        </a> by</li>
+        <li>
+          <a href="<%= user_url(pattern.designer) %>">
+            <%= pattern.designer.email %>
+          </a>
+        </li>
+        <li>
+          Tags:
+          <%= pattern.tags.map(&:name).join(', ') %>
+        </li>
+      </ul>
     <% end %>
+  </li>
   </ul>
   <%= paginate @patterns %>
 </article>

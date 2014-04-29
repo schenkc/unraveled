@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  include Rails.application.routes.url_helpers
 
   include PgSearch
   multisearchable :against => [:email, :name]
@@ -11,7 +12,8 @@ class User < ActiveRecord::Base
   before_validation :ensure_session_token, on: [:create]
   before_validation :ensure_activation_token, on: [:create]
 
-  has_attached_file :avatar, styles: { thumb: "100x100>" }, :default_url => "/images/:style/missing.png"
+  has_attached_file :avatar, styles: { thumb: "100x100>" },
+                    :default_url => "https://s3.amazonaws.com/unravaled_dev/default_images/unraveled_default.png"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\z/
 
   has_many(
@@ -107,6 +109,14 @@ class User < ActiveRecord::Base
 
   def is_password?(password)
     BCrypt::Password.new(self.password_digest).is_password?(password)
+  end
+
+  def is_leader?(user)
+    self.followers.where(id: user.id).count == 0 ? false : true
+  end
+
+  def show_name
+    self.name ? self.name : self.email
   end
 
   private

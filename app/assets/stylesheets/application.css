@@ -14,7 +14,7 @@
 
 /* resets */
 
-h1, h2, h3, body, section, div, button, a, label, form, li, ul, nav, article, form {
+h1, h2, h3, h4, body, section, div, button, a, label, form, li, ul, nav, article, form, strong {
   padding: 0;
   margin: 0;
   border: 0;
@@ -26,6 +26,7 @@ input[type="text"],
 input[type="email"],
 input[type="password"],
 input[type="submit"],
+input[type="url"],
 textarea {
   -webkit-appearance: none;
   box-sizing: content-box;
@@ -46,14 +47,13 @@ ul {
 }
 
 a {
+  font-weight: bold;
   text-decoration: none;
-  color: white;
+  color: #90007b;
 }
 
-.group:after {
-  content: "";
-  clear: both;
-  display: block;
+a:hover {
+  color: #a5cb93;
 }
 
 input[type="submit"] {
@@ -63,63 +63,368 @@ input[type="submit"] {
 
 body {
   font-family: sans-serif;
-  background: gray;
+  font-size: 16px;
+  background: #D5F3D4;
 }
 
 input[type="text"],
 input[type="email"],
 input[type="password"],
-input[type="submit"],
 textarea {
-  background: white;
+  background: transparent;
   font: inherit;
 }
 
-nav.nav-bar {
-  border-bottom: 1px solid black;
-  width: 900px;
-  margin: auto;
+input[type="submit"] {
+  background: transparent;
+  font-weight: bold;
+  color: #fff;
 }
 
-nav.nav-bar ul {
-  float: left;
-
-}
-
-nav.nav-bar li {
-  float: left;
-  padding: 10px;
-}
-
-.nav-bar > form {
-  float: right;
-}
-
-.nav-bar submit {
-  padding: 10px;
-  margin: 10px;
+strong {
+  font-weight: bold;
 }
 
 h1 {
-  font-size: 30px;
+  font-size: 48px;
 }
 
-article {
+h2 {
+  font-size: 24px;
+}
+
+h3 {
+  font-size: 20px;
+}
+
+/* clear fix */
+
+.group:after {
+  content: "";
+  clear: both;
+  display: block;
+}
+
+/* nav bar stuff */
+
+.logo {
+  height: 80px;
   float: left;
-  border-left: 1px solid black;
-  width: 409px;
-  padding: 20px;
 }
 
-article > img {
-  display: block;
+.nav-bar a {
+  color: #fff;
 }
 
-label {
-  display: block;
+.nav-bar a:hover {
+  color: #90007b;
 }
 
-section.content {
+.nav-bar {
   width: 900px;
   margin: auto;
 }
+
+.nav-bar-header {
+  background: #a5cb93;
+  border-bottom: 2px solid #bbb;
+}
+
+.user-nav {
+  float: left;
+}
+
+.user-nav > li {
+  color: #fff;
+  font-weight: bold;
+  position: relative;
+  float: left;
+  padding: 60px 20px 4px 20px;
+}
+
+.user-nav > li.looking:hover {
+  color: #90007b;
+}
+
+.user-nav .go-places-drop-down {
+  display: none;
+  position: absolute;
+  border-left: 2px solid #bbb;
+  border-right: 2px solid #bbb;
+  width: 200px;
+}
+
+.user-nav > li.looking:hover > .go-places-drop-down {
+  display: block;
+}
+
+.go-places-drop-down > li {
+  border-bottom: 2px solid #bbb;
+  padding: 10px 20px;
+  background: #a5cb93;
+}
+
+.notification-drop-down {
+  display: none;
+  position: absolute;
+  border-left: 2px solid #bbb;
+  border-right: 2px solid #bbb;
+  width: 200px;
+}
+
+li.notify:hover > .notification-drop-down {
+  display: block;
+}
+
+.notification-drop-down > li {
+  border-bottom: 2px solid #bbb;
+  padding: 10px 20px;
+  background: #a5cb93;
+}
+
+.notify > strong {
+  font-size: 12px;
+  background: #90007b;
+  padding: 2px 7px;
+  border-radius: 12px;
+}
+
+.nav-bar input[type="submit"]:hover {
+  color: #90007b;
+}
+
+.nav-bar input[type="text"] {
+  background: #D5F3D4;
+  font-weight: normal;
+  color: black;
+}
+/* for every page */
+
+img {
+  display: block;
+  height: 100px;
+}
+
+section.content {
+  width: 856px;
+  margin: auto;
+  padding: 20px;
+  border-left: 2px solid #bbb;
+  border-right: 2px solid #bbb;
+  background: #fff;
+}
+
+input[type="submit"] {
+  color: #90007b;
+}
+input[type="submit"]:hover {
+  color: #a5cb93;
+}
+
+/* footer */
+
+footer.info {
+  background: #a5cb93;
+  margin: auto;
+  width: 896px;
+  border: 2px solid #bbb;
+  margin-bottom: 100px;
+}
+
+footer.info > ul {
+  float: left;
+}
+
+footer.info li {
+  float: left;
+  padding: 20px;
+}
+
+footer.info a {
+  color: #fff;
+}
+footer.info a:hover {
+  color: #90007b;
+}
+
+/* user's own show page */
+
+.content-header {
+}
+
+.content-header h1 {
+  display: block;
+  float: left;
+}
+
+.content-header img {
+  float: right;
+}
+
+.content-head a {
+}
+
+/* patterns */
+
+article.patterns {
+  width: 407px;
+  border-right: 2px solid #bbb;
+  float: left;
+}
+
+.patterns a {
+  display: block;
+  padding: 10px;
+}
+
+/* library */
+
+article.library {
+  width: 407px;
+  float: right;
+}
+
+.library a {
+  display: block;
+  padding: 10px;
+}
+
+.library input[type="submit"] {
+  padding: 0 0 10px 10px;
+}
+
+/* footer */
+
+footer.followers {
+  margin-top: 20px;
+  border-top: 2px solid #bbb;
+  padding: 15px 0;
+}
+
+.followers h3 {
+  padding-bottom: 15px;
+}
+
+.followers li {
+}
+
+.followers a {
+  display: block;
+  padding: 10px;
+}
+
+/* other's show page */
+
+.user-info {
+}
+
+.user-info h1 {
+  display: block;
+  float: left;
+}
+
+.user-info img {
+  float: right;
+}
+
+.user-info a {
+}
+
+/* main index page */
+
+article.pattern-listing {
+  width: 407px;
+  border-right: 2px solid #bbb;
+  float: left;
+}
+
+.pattern-listing a {
+  display: inline-block;
+  padding: 5px;
+}
+
+article.user-search {
+  width: 407px;
+  float: right;
+}
+
+.user-search a {
+  display: inline-block;
+  padding: 10px;
+}
+
+/* user index page */
+
+.user-index li {
+  float: left;
+  width: 204px;
+  height: 204px;
+}
+ /* user edit form */
+
+ .user-edit-header {
+   text-align: center;
+ }
+
+ .user-edit {
+   width: 400px;
+   margin: auto;
+ }
+
+ .user-edit label {
+   display: block;
+   font-weight: bold;
+   padding: 20px 0 10px 0;
+ }
+
+ .user-edit input[type="text"] {
+   width: 350px;
+   background: #D5F3D4;
+ }
+
+ .user-edit textarea {
+   width: 350px;
+   height: 200px;
+   background: #D5F3D4;
+   padding-bottom: 20px;
+ }
+
+ .delete-user {
+   padding: 20px;
+   margin: auto;
+ }
+
+/* pattern form */
+
+ .pattern-form {
+   width: 400px;
+   margin: auto;
+ }
+
+ .pattern-form label {
+   display: block;
+   font-weight: bold;
+   padding: 20px 0 10px 0;
+ }
+
+ .pattern-form input[type="text"], input[type="url"] {
+   width: 350px;
+   background: #D5F3D4;
+   padding: 10px 5px;
+ }
+
+ .pattern-form textarea {
+   width: 350px;
+   height: 200px;
+   background: #D5F3D4;
+   padding-bottom: 20px;
+   padding: 10px 5px;
+ }
+
+ .pattern-form input[type="submit"] {
+   padding: 20px;
+ }
+
+
+
+

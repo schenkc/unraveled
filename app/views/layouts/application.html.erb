@@ -9,72 +9,82 @@
 <body>
 
 <nav class="nav-bar group">
-  <% if current_user %>
-    <ul>
-      <li>
-        <a href="<%= patterns_url %>">
-          Patterns
-        </a>
-      </li>
-      <li>
-        <a href="<%= user_url(current_user) %>">
-          Library
-        </a>
-      </li>
-      <li>
-        <a href="<%= users_url %>">
-          Everyone
-        </a>
-      </li>
-      <!-- <li><a href="#">Messages</a></li>
-      <li><a href="#">Projects</a></li>
-      <li><a href="#">Queue</a></li>
-      <li><a href="#">Favorites</a></li>
-      <li><a href="<%= edit_user_url(current_user) %>">Edit Profile</a></li>
-      <li><a href="#">Favorites</a></li> -->
-      <li>
-        <a href="<%= edit_user_url(current_user) %>">
-          Edit profile
-        </a>
-      </li>
-      <li>
-        <form action="/search" method="get">
-          <input type="text" name="query" value="<%= params[:query] %>">
-          <input type="submit" value="Search">
-        </form>
-      </li>
-      <li>
-        <a href="<%= notifications_url %>">
-          Notifications
-        </a>
-        <% unless current_user.notifications.empty? %>
-          <strong><%= current_user.notifications.unread.size %></strong>
-          <ul>
-            <%= render partial: "notifications/notification", collection: current_user.notifications.unread %>
+  <nav class="nav-bar-header group">
+    <a href="<%= patterns_url %>">
+      <img class="logo" src="https://s3.amazonaws.com/unravaled_dev/default_images/unraveled_logo.png">
+    </a>
+    <% if current_user %>
+      <ul class="user-nav">
+        <li class="looking">Looking for something?
+          <ul class="go-places-drop-down">
+            <li>
+              <a href="<%= patterns_url %>">
+                Patterns
+              </a>
+            </li>
+            <li>
+              <a href="<%= user_url(current_user) %>">
+                Library
+              </a>
+            </li>
+            <li>
+              <a href="<%= users_url %>">
+                Everyone
+              </a>
+            </li>
+            <!-- <li><a href="#">Messages</a></li>
+            <li><a href="#">Projects</a></li>
+            <li><a href="#">Queue</a></li>
+            <li><a href="#">Favorites</a></li>
+            <li><a href="<%= edit_user_url(current_user) %>">Edit Profile</a></li>
+            <li><a href="#">Favorites</a></li> -->
+            <li>
+              <a href="<%= edit_user_url(current_user) %>">
+                Edit profile
+              </a>
+            </li>
           </ul>
-        <% end %>
-      </li>
+        </li>
+        <li class="notify">
+          <a href="<%= notifications_url %>">
+            Notifications
+          </a>
+          <% unless current_user.notifications.empty? %>
+            <strong><%= current_user.notifications.unread.size %></strong>
+            <ul class="notification-drop-down">
+              <%= render partial: "notifications/notification", collection: current_user.notifications.unread %>
+            </ul>
+          <% end %>
+        </li>
+        <li>
+          <form class="search-form" action="/search" method="get">
+            <input type="text" name="query" value="<%= params[:query] %>">
+            <input type="submit" value="Search">
+          </form>
+        </li>
+        <li>
+          <form class="sign-out" action="<%= session_url %>" method="post">
+              <input type="hidden" name="_method" value="delete">
+            <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+            <input type="submit" value="Sign Out">
+          </form>
+        </li>
+      </ul>
 
 
-    </ul>
-
-
-
-  <form action="<%= session_url %>" method="post">
-      <input type="hidden" name="_method" value="delete">
-    <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
-    <input type="submit" value="Sign Out">
-  </form>
-
-  <% else %>
-
-  <a href="<%= new_session_url %>">Sign In</a>
-  <a href="<%= new_user_url %>">Sign Up</a>
-  <% end %>
-
+    <% else %>
+    <ul class="log-in-options">
+    <li>
+      <a href="<%= new_session_url %>">Sign In</a>
+    </li>
+    <li>
+      <a href="<%= new_user_url %>">Sign Up</a>
+    </li>
+    <% end %>
+  </nav>
 </nav>
 
-<section class="content">
+<section class="content group">
   <% if flash.now[:errors] %>
   <ul>
     <% flash.now[:errors].each do |error| %>
@@ -88,5 +98,19 @@
   <%= yield %>
 
 </section>
+
+<footer class="info group">
+  <ul>
+    <li>
+      This is my final project.
+    </li>
+    <li>
+      Contact me.
+    </li>
+    <li>
+      <a href="http://www.appacademy.io/#p-home">Learn more.</a>
+    </li>
+  </ul>
+</footer>
 </body>
 </html>

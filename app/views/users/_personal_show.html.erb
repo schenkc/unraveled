@@ -1,9 +1,8 @@
-<h1>Hey there <%= @user.name ? @user.name : @user.email %></h1>
-<% if current_user.avatar %>
-  <img src="<%= current_user.avatar.url(:thumb) %>">
-<% else %>
+<header class="content-header group">
+  <h1>Hey there <%= @user.show_name %></h1>
+  <img class="avatar" src="<%= current_user.avatar.url(:thumb) %>">
   <a href="<%= edit_user_url %>">Edit Profile</a>
-<% end %>
+</header>
 
 <section class="group">
   <article class="patterns">
@@ -12,7 +11,16 @@
     <h2>Patterns you've made</h2>
     <ul>
       <% @patterns.each do |pattern| %>
-      <li><a href="<%= pattern_url(pattern) %>"><img src="<%= pattern.pictures.first.image.url(:thumb) if pattern.pictures.first %>"><%= pattern.name %></a></li>
+      <li>
+        <a href="<%= pattern_url(pattern) %>">
+          <% if pattern.pictures.first %>
+            <img src="<%= pattern.pictures.first.image.url(:thumb) %>">
+          <% else %>
+            <img src="<%= asset_path "unraveled_default.png" %>">
+          <% end %>
+          <%= pattern.name %>
+        </a>
+      </li>
       <% end %>
     </ul>
     <% end %>
@@ -27,10 +35,15 @@
         <li>
 
           <a href="<%= pattern_url(pattern) %>">
-            <img src="<%= pattern.pictures.first.image.url(:thumb) if pattern.pictures.first %>"><%= pattern.name %>
+            <% if pattern.pictures.first %>
+              <img src="<%= pattern.pictures.first.image.url(:thumb) %>">
+            <% else %>
+              <img src="<%= asset_path "unraveled_default.png" %>">
+            <% end %>
+            <%= pattern.name %>
           </a>
         <form action="<%= user_liked_pattern_url(pattern) %>" method="post">
-            <input type="hidden" name="_method" value="delete">
+          <input type="hidden" name="_method" value="delete">
           <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
           <input type="submit" value="Remove pattern">
         </form>
@@ -48,6 +61,20 @@
 
       </ul>
     <% end %>
-
   </article>
 </section>
+
+  <footer class="followers">
+    <% if @followers %>
+    <h3>People you enjoy</h3>
+    <ul>
+      <% @followers.each do |user| %>
+        <li>
+          <a href="<%= user_url(user) %>">
+            <%= user.name ? user.name : user.email %>
+          </a>
+        </li>
+      <% end %>
+    </ul>
+    <% end %>
+  </footer>

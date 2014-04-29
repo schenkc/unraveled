@@ -1,7 +1,7 @@
 <% action_url = ( action == :new ) ? patterns_url : pattern_url %>
 <% button_text = ( action == :new ) ? "Add New Pattern" : "Update Pattern" %>
 
-<section>
+<section class="pattern-form">
 <form action="<%= action_url %>" method="post" enctype="multipart/form-data">
   <% if action == :edit %>
     <input type="hidden" name="_method" value="patch">
