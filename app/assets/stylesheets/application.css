@@ -330,6 +330,10 @@ footer.followers {
 .user-info a {
 }
 
+.user-info p {
+  display: block;
+}
+
 /* main index page */
 
 article.pattern-listing {

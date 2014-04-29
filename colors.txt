@@ -1,0 +1,5 @@
+magenta: #90007b
+"dark" mint: #a5cb93
+"light" mint: #D5F3D4
+
+boarder on nav-bar: 2px solid #bbb

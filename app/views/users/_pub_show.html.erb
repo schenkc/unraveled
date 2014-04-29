@@ -12,6 +12,7 @@
       <input type="submit" value="Follow">
     </form>
   <% end %>
+  <p><%= @user.bio %></p>
 </header>
 
 <section class="group">
@@ -23,7 +24,12 @@
       <% @patterns.each do |pattern| %>
       <li>
         <a href="<%= pattern_url(pattern) %>">
-          <img src="<%= pattern.pictures.first.image.url(:thumb) if pattern.pictures.first %>"><%= pattern.name %>
+          <% if pattern.pictures.first %>
+            <img src="<%= pattern.pictures.first.image.url(:thumb) %>">
+          <% else %>
+            <img src="<%= asset_path "unraveled_default.png" %>">
+          <% end %>
+          <%= pattern.name %>
         </a>
         <form action="<%= pattern_user_liked_patterns_url(pattern) %>" method="post">
           <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
@@ -43,7 +49,12 @@
         <li>
 
           <a href="<%= pattern_url(pattern) %>">
-            <img src="<%= pattern.pictures.first.image.url(:thumb) if pattern.pictures.first %>"><%= pattern.name %>
+            <% if pattern.pictures.first %>
+              <img src="<%= pattern.pictures.first.image.url(:thumb) %>">
+            <% else %>
+              <img src="<%= asset_path "unraveled_default.png" %>">
+            <% end %>
+            <%= pattern.name %>
           </a>
 
           <form action="<%= pattern_user_liked_patterns_url(pattern) %>" method="post">
