@@ -1,7 +1,7 @@
 <% action_url = ( action == :session) ? session_url : users_url %>
 <% button_text = ( action == :session ) ? "Sign In" : "Sign Up" %>
 
-<form action="<%= action_url %>" method="post">
+<form class="sign-in-up" action="<%= action_url %>" method="post">
   <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
   <label>Email
@@ -11,7 +11,7 @@
   <label>Password
     <input id="user_password" name="user[password]" type="password">
   </label>
-  
+
   <% if action == :user %>
     <label for="password_confirmation">Password Confirmation</label>
     <input id="user_password_confirmation" name="user[password_confirmation]" type="password">

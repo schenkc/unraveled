@@ -425,6 +425,19 @@ article.user-search {
    padding: 20px;
  }
 
+/* sign in/up */
 
+ .sign-in-up {
+   padding: 30px;
+ }
+
+ .sign-in-up input[type="text"], input[type="password"] {
+   background: #d5f3d4;
+   padding: 10px 5px;
+ }
+
+ .sign-in-up input[type="submit"] {
+   padding: 20px;
+ }
 
 

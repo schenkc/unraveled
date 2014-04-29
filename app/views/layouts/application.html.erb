@@ -36,7 +36,6 @@
             <li><a href="#">Projects</a></li>
             <li><a href="#">Queue</a></li>
             <li><a href="#">Favorites</a></li>
-            <li><a href="<%= edit_user_url(current_user) %>">Edit Profile</a></li>
             <li><a href="#">Favorites</a></li> -->
             <li>
               <a href="<%= edit_user_url(current_user) %>">
@@ -74,13 +73,14 @@
 
     <% else %>
     <ul class="log-in-options">
-    <li>
-      <a href="<%= new_session_url %>">Sign In</a>
-    </li>
-    <li>
-      <a href="<%= new_user_url %>">Sign Up</a>
-    </li>
-    <% end %>
+      <li>
+        <a href="<%= new_session_url %>">Sign In</a>
+      </li>
+      <li>
+        <a href="<%= new_user_url %>">Sign Up</a>
+      </li>
+      <% end %>
+    </ul>
   </nav>
 </nav>
 
@@ -99,18 +99,18 @@
 
 </section>
 
-<footer class="info group">
-  <ul>
-    <li>
-      This is my final project.
-    </li>
-    <li>
-      Contact me.
-    </li>
-    <li>
-      <a href="http://www.appacademy.io/#p-home">Learn more.</a>
-    </li>
-  </ul>
-</footer>
+  <footer class="info group">
+    <ul>
+      <li>
+        This is my final project.
+      </li>
+      <li>
+        Contact me.
+      </li>
+      <li>
+        <a href="http://www.appacademy.io/#p-home">Learn more.</a>
+      </li>
+    </ul>
+  </footer>
 </body>
 </html>
