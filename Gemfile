@@ -57,6 +57,7 @@ gem 'aws-sdk'
 gem 'figaro'
 gem 'kaminari'
 gem 'pg_search'
+gem 'backbone-on-rails'
 
 gem 'rails_12factor', group: :production
 

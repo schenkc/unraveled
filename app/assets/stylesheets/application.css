@@ -189,6 +189,9 @@ li.notify:hover > .notification-drop-down {
   border-radius: 12px;
 }
 
+.nav-bar input[type="submit"] {
+  color: #fff;
+}
 .nav-bar input[type="submit"]:hover {
   color: #90007b;
 }
