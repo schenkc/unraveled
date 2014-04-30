@@ -6,7 +6,7 @@
   <label for="receiver">Send message to</label>
   <select id = "receiver" name="message[receiver_id]">
     <% @friends.try(:each) do |friend| %>
-      <option value="friend.id"><%= friend.show_name %></option>
+      <option value="<%= friend.id %>"><%= friend.show_name %></option>
     <% end %>
   </select>
 

@@ -1,4 +1,5 @@
 <h1>Messages</h1>
+<a href="<%= new_message_url %>">Send a message</a>
 
 <article class="sent-messages">
   <h2>Sent Messages</h2>
@@ -20,7 +21,7 @@
 <article class="received-messages">
   <h2>Received Messages</h2>
   <ul>
-    <% @reseived_messages.try(:each) do |message| %>
+    <% @received_messages.try(:each) do |message| %>
       <li>
         <ul class="message-content">
           <li><%= message.sender.show_name %> sent you a message at <%= message.created_at %> has<%= message.is_seen? ? "" : " not"%> been seen.

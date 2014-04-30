@@ -71,7 +71,7 @@ input[type="text"],
 input[type="email"],
 input[type="password"],
 textarea {
-  background: transparent;
+  background: #d5f3d4;
   font: inherit;
 }
 
@@ -169,7 +169,7 @@ h3 {
   position: absolute;
   border-left: 2px solid #bbb;
   border-right: 2px solid #bbb;
-  width: 200px;
+  width: 300px;
 }
 
 li.notify:hover > .notification-drop-down {

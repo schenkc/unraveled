@@ -14,6 +14,7 @@ Unraveled::Application.routes.draw do
   resources :tags, only: [:create]
   resources :notifications, only: [:index, :show]
   resources :messages
+  get 'messages/:id/thread' => 'messages#thread'
   get 'patterns/:id/pdf' => 'patterns#pdf'
   get 'search' => 'patterns#search'
 

@@ -50,7 +50,8 @@ class Notification < ActiveRecord::Base
       library = self.notifiable.owner
       user_url(library)
     when :new_message
-      
+      message = self.notifiable
+      message_url(message)
     end
   end
 
@@ -71,7 +72,7 @@ class Notification < ActiveRecord::Base
       owner_name = (library.owner.name ? library.owner.name : library.owner.email)
       "#{owner_name} has added #{pattern.name} to their library."
     when :new_message
-      message = self.notificable
+      message = self.notifiable
       "#{message.sender.show_name} has sent you a message."
     end
   end

@@ -10,6 +10,7 @@ class MessagesController < ApplicationController
   def new
     @message = current_user.sent_messages.new
     @friends = current_user.followers + current_user.leaders
+    @friends.uniq!
     
     render :new
   end
@@ -27,7 +28,37 @@ class MessagesController < ApplicationController
   
   def show
     @message = Message.find(params[:id])
+    @message.is_seen = true
+    @message.save
     render :show
+  end
+  
+  def destroy
+    @message = Message.find(params[:id])
+    
+    if @message.sender_delete  && ( @message.sender_delete == @message.receiver_delete )
+      @message.destroy
+    elsif @message.sender_id == current_user.id
+      @message.update(sender_delete: true)
+      @m
+    elsif @message.receiver_id == current_user.id
+      @message.update(receiver_delete: true)
+    end
+    
+    redirect_to messages_url
+  end
+  
+  def thread
+    @message = Message.find(params[:id])
+    @sender = @message.sender
+    sender_id = @message.sender_id
+    receiver_id = @message.receiver_id
+    where_string= "(sender_id = :sender_id AND receiver_id = :receiver_id) OR (sender_id = :receiver_id AND receiver_id = :sender_id)"
+    @messages = Message.all
+                       .where(where_string, {sender_id: sender_id, receiver_id: receiver_id})
+                       .order(:created_at)
+    
+    render :thread
   end
   
   private

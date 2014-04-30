@@ -1,0 +1,28 @@
+<h1>Messages between you and <%= @sender.show_name %></h1>
+
+<article class="sent-messages">
+  <h2>Sent Messages</h2>
+  <ul>
+    <% @messages.try(:each) do |message| %>
+      <li class="<%= (message == @message) ? "current-message" : "old-message"%>">
+        <ul class="message-content">
+          <li><%= message.receiver.show_name %> says: <%= message.body %>
+          </li>
+          <li class="message-body">
+            <%= message.is_seen? ? "Seen" : "Not seen"%>
+          </li>
+          <li>
+        
+            <form class="delete-message" action="<%= message_url(message) %>" method="post">
+              <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+              <input type="hidden" name="_method" value="delete">
+
+              <input type="submit" value="Delete">
+            </form>
+            
+          </li>
+        </ul>
+      </li>
+    <% end %>
+  </ul>
+</article>

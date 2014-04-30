@@ -6,8 +6,8 @@ class Message < ActiveRecord::Base
   before_validation :set_defaults, on: [:create]
   after_commit :set_notification, on: [:create]
 
-  scope :seen, -> { where(is_seen: true) }
-  scope :unseen, -> { where(is_seen: false) }
+  # scope :seen, -> { where(is_seen: true) }
+  # scope :unseen, -> { where(is_seen: false) }
   # scope :undeleteable, -> { where(sender_delete: false).where(receiver_delete: false) }
 
   belongs_to(

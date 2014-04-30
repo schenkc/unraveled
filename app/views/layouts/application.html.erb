@@ -85,6 +85,9 @@
 </nav>
 
 <section class="content group">
+  <% if current_user %>
+    <p>Currently signed in as: <%= current_user.show_name %></p>
+  <% end %>
   <% if flash.now[:errors] %>
   <ul>
     <% flash.now[:errors].each do |error| %>
