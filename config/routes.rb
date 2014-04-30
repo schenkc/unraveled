@@ -8,15 +8,20 @@ Unraveled::Application.routes.draw do
   resource :session, only: [:new, :create, :destroy]
   resources :patterns do
     resources :user_liked_patterns, only: [:create]
+    get 'pdf', on: :member
   end
   resources :user_liked_patterns, only: [:destroy]
 
   resources :tags, only: [:create]
   resources :notifications, only: [:index, :show]
-  resources :messages
-  get 'messages/:id/thread' => 'messages#thread'
-  get 'patterns/:id/pdf' => 'patterns#pdf'
+  resources :messages, only: [:index]
+  # do
+  # get 'thread', on: :member
+  # end
   get 'search' => 'patterns#search'
+  namespace :api, defaults: { formate: :json } do
+    resources :messages
+  end
 
 
 end

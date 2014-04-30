@@ -58,6 +58,7 @@ gem 'figaro'
 gem 'kaminari'
 gem 'pg_search'
 gem 'backbone-on-rails'
+gem 'ejs'
 
 gem 'rails_12factor', group: :production
 

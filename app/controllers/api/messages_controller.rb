@@ -1,4 +1,4 @@
-class MessagesController < ApplicationController
+class Api::MessagesController < ApplicationController
 
 before_filter :require_signed_in!
 
@@ -6,7 +6,7 @@ before_filter :require_signed_in!
     @sent_messages = current_user.sent_messages.includes(:receiver)
     @received_messages = current_user.received_messages.includes(:sender)
 
-    render :root
+    render :json => @received_messages
   end
 
   def new

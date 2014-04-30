@@ -1,0 +1,15 @@
+<article class="received-messages">
+  <h2>Received Messages</h2>
+  <ul>
+    <% messages.forEach( function(message) { %>
+      <li>
+        <ul class="message-content">
+          <li><%= message %></li>
+          <li class="message-body">
+            <%= message.escape("body") %>
+          </li>
+        </ul>
+      </li>
+    <% }); %>
+  </ul>
+</article>

@@ -4,10 +4,19 @@ window.Unraveled = {
   Views: {},
   Routers: {},
   initialize: function() {
-    alert('Hello from Backbone!');
+    var $rootEl = $('#message');
+    var receivedMessages = new Unraveled.Collections.Messages();
+
+    receivedMessages.fetch({
+      success: function () {
+        console.log(receivedMessages)
+        new Unraveled.Routers.MessageRouter(receivedMessages, $rootEl);
+        Backbone.history.start();
+      },
+      error: function () {
+        console.log('Failed to fetch.');
+      }
+    });
   }
 };
 
-$(document).ready(function(){
-  Unraveled.initialize();
-});
