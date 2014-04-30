@@ -1,0 +1,11 @@
+<h1>Message Show Page</h1>
+
+<article class="sent-messages"> 
+  <ul class="message-content">
+    <li>Message sent to <%= @message.receiver.show_name %> from <%= @message.sender.show_name %> at <%= @message.created_at %> has<%= @message.is_seen? ? "" : " not"%> been seen.
+    </li>
+    <li class="message-body">
+      <%= message.body %>
+    </li>
+  </ul>
+</article>

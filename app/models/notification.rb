@@ -4,7 +4,8 @@ class Notification < ActiveRecord::Base
   EVENTS = {
     1 => :new_follower,
     2 => :new_pattern_from_leader,
-    3 => :pattern_in_new_library
+    3 => :pattern_in_new_library,
+    4 => :new_message
   }
 
   EVENT_IDS = EVENTS.invert
@@ -48,6 +49,8 @@ class Notification < ActiveRecord::Base
     when :pattern_in_new_library
       library = self.notifiable.owner
       user_url(library)
+    when :new_message
+      
     end
   end
 
@@ -67,6 +70,9 @@ class Notification < ActiveRecord::Base
       pattern = library.pattern
       owner_name = (library.owner.name ? library.owner.name : library.owner.email)
       "#{owner_name} has added #{pattern.name} to their library."
+    when :new_message
+      message = self.notificable
+      "#{message.sender.show_name} has sent you a message."
     end
   end
 

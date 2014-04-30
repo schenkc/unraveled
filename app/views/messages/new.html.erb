@@ -1,0 +1,17 @@
+<h1>New Message</h1>
+
+<form class="message" action="<%= messages_url %>" method="post">
+  <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+  <label for="receiver">Send message to</label>
+  <select id = "receiver" name="message[receiver_id]">
+    <% @friends.try(:each) do |friend| %>
+      <option value="friend.id"><%= friend.show_name %></option>
+    <% end %>
+  </select>
+
+  <label for="body">Message</label>
+  <textarea id="body" name="message[body]" spellcheck="true">Type here</textarea>
+  
+  <input type="submit" value="Send">
+</form>

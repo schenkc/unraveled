@@ -25,7 +25,7 @@ class UserLikedPattern < ActiveRecord::Base
     dependent: :destroy
   )
 
-  # private
+  private
 
   def set_notification
     notification = self.notifications.unread.event(:pattern_in_new_library).new

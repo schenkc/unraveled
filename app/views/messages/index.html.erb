@@ -1,0 +1,35 @@
+<h1>Messages</h1>
+
+<article class="sent-messages">
+  <h2>Sent Messages</h2>
+  <ul>
+    <% @sent_messages.try(:each) do |message| %>
+      <li>
+        <ul class="message-content">
+          <li>Message to <%= message.receiver.show_name %> sent at <%= message.created_at %> has<%= message.is_seen? ? "" : " not"%> been seen.
+          </li>
+          <li class="message-body">
+            <%= message.body %>
+          </li>
+        </ul>
+      </li>
+    <% end %>
+  </ul>
+</article>
+
+<article class="received-messages">
+  <h2>Received Messages</h2>
+  <ul>
+    <% @reseived_messages.try(:each) do |message| %>
+      <li>
+        <ul class="message-content">
+          <li><%= message.sender.show_name %> sent you a message at <%= message.created_at %> has<%= message.is_seen? ? "" : " not"%> been seen.
+          </li>
+          <li class="message-body">
+            <%= message.body %>
+          </li>
+        </ul>
+      </li>
+    <% end %>
+  </ul>
+</article>
