@@ -5,6 +5,7 @@ before_filter :require_signed_in!
   def index
     @sent_messages = current_user.sent_messages.includes(:receiver)
     @received_messages = current_user.received_messages.includes(:sender)
+    @friends = current_user.followers + current_user.leaders
 
     render :root
   end

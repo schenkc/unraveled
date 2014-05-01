@@ -1,26 +1,35 @@
 Unraveled.Views.MessageForm = Backbone.View.extend({
+
   events: {
-    'click .submit': "submit"
+    'submite form': "submitForm"
+  },
+
+  id: "new-message-form",
+
+  initialize: function () {
+    this.render();
   },
 
   template: JST['messages/form'],
 
   render: function () {
     var renderedContent = this.template({
-
+      friends: this.collection
     });
     this.$el.html(renderedContent);
 
     return this;
   },
 
-  submit: function (even) {
+  submitForm: function (even) {
     event.preventDefault();
 
-    var attrs = $(event.target.form).serializeJSON();
+    var $form = $(event.currentTarget);
+    var formData = $form.serializeJSON();
 
-    function seccess () {
+    this.collection.create(formData.message);
 
-    }
+    $form[0].reset();
+
   }
 });

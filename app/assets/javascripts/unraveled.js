@@ -5,18 +5,14 @@ window.Unraveled = {
   Routers: {},
   initialize: function() {
     var $rootEl = $('.message');
-    var receivedMessages = new Unraveled.Collections.Messages();
+    var json = JSON.parse($("#bootstrapped-messages").html());
+    var receivedMessages = new Unraveled.Collections.Messages(json.receivedMessages, { parse: true });
+    var sentMessages = new Unraveled.Collections.Messages(json.sentMessages, { parse: true });
+    var friends = new Unraveled.Collections.Friends(json.friends, { parse: true });
 
-    receivedMessages.fetch({
-      success: function () {
-        console.log(receivedMessages)
-        new Unraveled.Routers.MessageRouter(receivedMessages, $rootEl);
-        Backbone.history.start();
-      },
-      error: function () {
-        console.log('Failed to fetch.');
-      }
-    });
+    var router = new Unraveled.Routers.MessageRouter(receivedMessages, sentMessages, friends, $rootEl);
+    Backbone.history.start();
+
   }
 };
 

@@ -1,0 +1,1 @@
+Unraveled.Models.Friend = Backbone.Model.extend({});

@@ -1,6 +1,8 @@
 Unraveled.Routers.MessageRouter = Backbone.Router.extend({
-  initialize: function (messages, $rootEl) {
-    this.messages = messages;
+  initialize: function (receivedMessages, sentMessages, friends, $rootEl) {
+    this.receivedMessages = receivedMessages;
+    this.sentMessages = sentMessages;
+    this.friends = friends;
     this.$rootEl = $rootEl;
   },
 
@@ -12,14 +14,16 @@ Unraveled.Routers.MessageRouter = Backbone.Router.extend({
 
   index: function () {
     var receivedMessagesIndexView = new Unraveled.Views.MessagesIndex({
-      collection: this.messages
+      inbox: this.receivedMessages,
+      outbox: this.sentMessages
     });
     this._swapView(receivedMessagesIndexView);
   },
 
   show: function(id) {
+
     var receivedMessageShowView = new Unraveled.Views.MessageShow({
-      model: this.messages.get(id)
+      model: this._getMessage(id)
     });
     this._swapView(receivedMessageShowView);
   },
@@ -27,7 +31,7 @@ Unraveled.Routers.MessageRouter = Backbone.Router.extend({
   new: function() {
     var newMessage = new Unraveled.Models.Message();
     var formView = new Unraveled.Views.MessageForm({
-      // collection: Unraveled.messages
+      collection: this.friends,
       model: newMessage
     });
     this._swapView(formView)
@@ -37,5 +41,13 @@ Unraveled.Routers.MessageRouter = Backbone.Router.extend({
     this._currentView && this._currentView.remove();
     this._currentView = view;
     this.$rootEl.html(view.render().$el);
+  },
+
+  _getMessage: function (id) {
+    if ( this.receivedMessages.get(id) ) {
+      return this.receivedMessages.get(id);
+    } else if ( this.sentMessages.get(id)) {
+      return this.sentMessages.get(id);
+    };
   }
 });
