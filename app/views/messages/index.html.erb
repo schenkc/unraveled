@@ -20,17 +20,20 @@
 
 <article class="received-messages">
   <h2>Received Messages</h2>
-  <ul>
+    <table>
+      <tbody>
+      <tr>
+        <td>Sender</td>
+        <td>Message</td>
+        <td>Sent At</td>
+      </tr>
     <% @received_messages.try(:each) do |message| %>
-      <li>
-        <ul class="message-content">
-          <li><%= message.sender.show_name %> sent you a message at <%= message.created_at %> has<%= message.is_seen? ? "" : " not"%> been seen.
-          </li>
-          <li class="message-body">
-            <%= message.body %>
-          </li>
-        </ul>
-      </li>
+      <tr>
+        <td><%= message.sender %></td>
+        <td><a href="/messages/<%= message.id %>/threads"><%= message.body%></a></td>
+        <td><%= message.created_at %>
+      </tr>
     <% end %>
-  </ul>
+    </tbody>
+  </table>
 </article>

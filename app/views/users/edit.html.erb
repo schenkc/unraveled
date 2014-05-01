@@ -19,6 +19,7 @@
   I should have a change email, change password link here.  Use ActiveMailer and tokens to make this happen.
 
   <form class="delete-user" action="<%= user_url(current_user) %>" method="post">
+    <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
     <input type="hidden" name="_method" value="delete">
     <input type="submit" value="Delete my account and all my patterns">
   </form>

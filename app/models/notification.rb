@@ -64,7 +64,7 @@ class Notification < ActiveRecord::Base
     when :new_pattern_from_leader
       pattern = self.notifiable
       leader = pattern.designer
-      designer_name = (designer.name ? designer.name : designer.email)
+      designer_name = leader.show_name
       "#{designer_name} has something new!"
     when :pattern_in_new_library
       library = self.notifiable

@@ -14,15 +14,26 @@ Unraveled.Routers.MessageRouter = Backbone.Router.extend({
     var receivedMessagesIndexView = new Unraveled.Views.MessagesIndex({
       collection: this.messages
     });
-    console.log("rootEl", this.$rootEl);
-    console.log("View", receivedMessagesIndexView)
     this._swapView(receivedMessagesIndexView);
-    console.log("new rootEl", this.$rootEl);
+  },
 
+  show: function(id) {
+    var receivedMessageShowView = new Unraveled.Views.MessageShow({
+      model: this.messages.get(id)
+    });
+    this._swapView(receivedMessageShowView);
+  },
+
+  new: function() {
+    var newMessage = new Unraveled.Models.Message();
+    var formView = new Unraveled.Views.MessageForm({
+      // collection: Unraveled.messages
+      model: newMessage
+    });
+    this._swapView(formView)
   },
 
   _swapView: function (view) {
-    console.log("view", view)
     this._currentView && this._currentView.remove();
     this._currentView = view;
     this.$rootEl.html(view.render().$el);

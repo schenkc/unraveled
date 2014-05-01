@@ -4,7 +4,7 @@ window.Unraveled = {
   Views: {},
   Routers: {},
   initialize: function() {
-    var $rootEl = $('#message');
+    var $rootEl = $('.message');
     var receivedMessages = new Unraveled.Collections.Messages();
 
     receivedMessages.fetch({

@@ -20,7 +20,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.all.page(params[:page])
+    @users = User.all.page(params[:page]).per(16)
     render :index
   end
 
@@ -40,6 +40,11 @@ class UsersController < ApplicationController
   def update
     current_user.update(user_params) if current_user.id.to_s == params[:id]
     redirect_to user_url(current_user)
+  end
+
+  def destroy
+    current_user.destroy
+    redirect_to new_user_url
   end
 
   def activate_user

@@ -1,15 +1,21 @@
 <article class="received-messages">
   <h2>Received Messages</h2>
-  <ul>
+    <table>
+      <tbody>
+      <tr>
+        <td>Sender</td>
+        <td>Message</td>
+        <td>Sent At</td>
+      </tr>
     <% messages.forEach( function(message) { %>
-      <li>
-        <ul class="message-content">
-          <li><%= message %></li>
-          <li class="message-body">
-            <%= message.escape("body") %>
-          </li>
-        </ul>
-      </li>
+      <tr>
+        <td><%= message.escape("sender") %></td>
+        <td><a href="<%= "#/" + message.get("id") %>">
+          <%= message.escape("body")%>
+        </a></td>
+        <td><%= message.escape("created_at")%>
+      </tr>
     <% }); %>
-  </ul>
+    </tbody>
+  </table>
 </article>
