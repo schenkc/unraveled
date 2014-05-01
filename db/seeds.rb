@@ -34,7 +34,7 @@ b = (1...10).to_a
   needles = "US " + (2 * b.suffle.first).to_s
   amount_yarn = "Enough"
   price = "free"
-  u.designs.create(name: name, yarn_name: yarn_name, yarn_weight: yarn_weight, stitch_col: stitch_col
-                    stitch_row: stitch_row, swatch: swatch, swatch_stitch: swatch_stitch, needles: needles
+  u.designs.create(name: name, yarn_name: yarn_name, yarn_weight: yarn_weight, stitch_col: stitch_col,
+                    stitch_row: stitch_row, swatch: swatch, swatch_stitch: swatch_stitch, needles: needles,
                     amount_yarn: amount_yarn, price: price)
 end
