@@ -42,7 +42,6 @@ end
 group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
-  gem 'faker'
 end
 
 group :test do
@@ -59,6 +58,7 @@ gem 'kaminari'
 gem 'pg_search'
 gem 'backbone-on-rails'
 gem 'ejs'
+gem 'faker'
 
 gem 'rails_12factor', group: :production
 
