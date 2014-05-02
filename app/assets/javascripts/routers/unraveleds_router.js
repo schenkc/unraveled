@@ -55,22 +55,20 @@ Unraveled.Routers.MessageRouter = Backbone.Router.extend({
 
     var thread = new Unraveled.Collections.Messages();
     var message = this._getMessage(id);
-    // var sender_id = message.get("sender_id");
-//     var receiver_id = message.get("receiver_id");
 
     if (this.receivedMessages.get(id)) {
       thread.push(this.receivedMessages.where({
         sender_id: message.get("sender_id")
       }));
       thread.push(this.sentMessages.where({
-        receiver_id: message.get("receiver_id")
+        receiver_id: message.get("sender_id")
       }));
     } else if (this.sentMessages.get(id)) {
       thread.push(this.sentMessages.where({
         receiver_id: message.get("receiver_id")
       }));
       thread.push(this.receivedMessages.where({
-        sender_id: message.get("sender_id")
+        sender_id: message.get("receiver_id")
       }));
     }
 
