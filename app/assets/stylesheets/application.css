@@ -244,7 +244,7 @@ footer.info li {
 }
 
 footer.info a {
-  color: #fff;
+  font-weight: normal;
 }
 footer.info a:hover {
   color: #90007b;

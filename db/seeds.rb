@@ -29,7 +29,8 @@ b = (1...10).to_a
 
   # messages
   body = "Hi there #{u2.show_name}, its nice to see you around here, #{u.show_name}"
-  m = u.sent_messages.create(body: body, receiver_id: u2.id)
+  m = u.sent_messages.new(body: body, receiver_id: u2.id)
+  m.save if m.valid?
 
   # patterns
   name = Faker::Commerce.product_name
@@ -45,5 +46,6 @@ b = (1...10).to_a
   p = u.designs.create(name: name, yarn_name: yarn_name, yarn_weight: yarn_weight, stitch_col: stitch_col,
                     stitch_row: stitch_row, swatch: swatch, swatch_stitch: swatch_stitch, needles: needles,
                     amount_yarn: amount_yarn, price: price)
-  # p.tags = make_tags(TAGS.shuffle.slice(b.sample))
+  tag_array = TAGS.sample(b.sample).map { |name| Tag.find_or_create_by(name: name)}
+  p.tags << tag_array
 end

@@ -5,7 +5,7 @@ Unraveled.Views.MessageShow = Backbone.View.extend({
   render: function() {
 
     var content = this.template({
-      message: this.model
+      thread: this.collection
     });
     this.$el.html(content);
     return this;

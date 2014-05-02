@@ -23,7 +23,7 @@ Unraveled.Routers.MessageRouter = Backbone.Router.extend({
   show: function(id) {
 
     var receivedMessageShowView = new Unraveled.Views.MessageShow({
-      model: this._getMessage(id)
+      collection: this._getThread(id)
     });
     this._swapView(receivedMessageShowView);
   },
@@ -49,5 +49,30 @@ Unraveled.Routers.MessageRouter = Backbone.Router.extend({
     } else if ( this.sentMessages.get(id)) {
       return this.sentMessages.get(id);
     };
+  },
+
+  _getThread: function(id) {
+
+    var thread = new Unraveled.Collections.Messages();
+    var message = this._getMessage(id);
+
+    if (this.receivedMessages.get(id)) {
+      thread.push(this.receivedMessages.where({
+        sender_id: message.get("sender_id")
+      }));
+      thread.push(this.sentMessages.where({
+        receiver_id: message.get("receiver_id")
+      }));
+    } else if (this.sentMessages.get(id)) {
+      thread.push(this.sentMessages.where({
+        receiver_id: message.get("receiver_id")
+      }));
+      thread.push(this.receivedMessages.where({
+        sender_id: message.get("sender_id")
+      }));
+    }
+
+    thread.sort();
+    return thread;
   }
 });

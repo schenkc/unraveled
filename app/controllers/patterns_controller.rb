@@ -47,8 +47,8 @@ before_filter :require_signed_in!
   end
 
   def show
-    @pattern = Pattern.find(params[:id])
-    @current_user = current_user
+    @pattern = Pattern.includes(:tags).find(params[:id])
+    @designer = @pattern.designer
     render :show
   end
 

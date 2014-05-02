@@ -51,7 +51,10 @@
           <% unless current_user.notifications.empty? %>
             <strong><%= current_user.notifications.unread.size %></strong>
             <ul class="notification-drop-down">
-              <%= render partial: "notifications/notification", collection: current_user.notifications.unread %>
+              <%= render partial: "notifications/notification", collection: current_user.notifications.unread[0..5] %>
+              <% if current_user.notifications.unread.length > 6 %>
+                <li><a href="<%= notifications_url %>">See all notifications</a></li>
+              <% end %>
             </ul>
           <% end %>
         </li>
@@ -105,13 +108,13 @@
   <footer class="info group">
     <ul>
       <li>
-        This is my final project.
+        This is my final project for <a href="http://www.appacademy.io/#p-home">App Academy</a>.
       </li>
       <li>
-        Contact me.
+        It's a clone of sorts of <a href="http://www.ravelry.com/">ravelry</a>.
       </li>
       <li>
-        <a href="http://www.appacademy.io/#p-home">Learn more.</a>
+        Learn more about me.
       </li>
     </ul>
   </footer>

@@ -20,7 +20,9 @@
         </li>
         <li>
           Tags:
-          <%= pattern.tags.map(&:name).join(', ') %>
+          <% pattern.tags.each do |tag| %>
+            <a class="search-tags" href="<%= search_url + '?query=' + tag.name %>"><%= tag.name %></a>
+          <% end %>
         </li>
       </ul>
     <% end %>

@@ -2,7 +2,8 @@ class Message < ActiveRecord::Base
 
   validates :sender_id, :receiver_id, :body, presence: true
   validates :is_seen, :sender_delete, :receiver_delete, inclusion: { in: [true, false] }
-  
+  validate :sender_neq_receiver
+
   before_validation :set_defaults, on: [:create]
   after_commit :set_notification, on: [:create]
 
@@ -23,7 +24,7 @@ class Message < ActiveRecord::Base
     foreign_key: :receiver_id,
     primary_key: :id
   )
-  
+
   has_many(
     :notifications,
     as: :notifiable,
@@ -39,11 +40,15 @@ class Message < ActiveRecord::Base
     self.is_seen = false
     return true
   end
-  
+
   def set_notification
     notification = self.notifications.unread.event(:new_message).new
     notification.user = self.receiver
     notification.save
+  end
+
+  def sender_neq_receiver
+    self.sender_id != self.receiver_id
   end
 
 end

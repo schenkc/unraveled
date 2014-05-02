@@ -1,13 +1,31 @@
 <h1>Message Show Page</h1>
 
-<article class="sent-messages">
-  <ul class="message-content">
-    <li>Message sent to <%= message.escape("receiver_id") %> from
-      <%= message.escape("sender_id") %> at <%= moment(message.escape("created_at")).fromNow() %>
-      has<%= message.get("is_seen?") ? "" : " not"%> been seen.
-    </li>
-    <li class="message-body">
-      <%= message.escape("body") %>
-    </li>
-  </ul>
+<article class="received-messages">
+
+  <h2>Received Messages</h2>
+
+    <table>
+      <tbody>
+      <tr>
+        <td>Sender</td>
+        <td>Message</td>
+        <td>Sent</td>
+      </tr>
+    <% thread.forEach( function(message) { %>
+      <tr>
+        <td><%= message.sender().escape("name") %></td>
+        <td><a href="<%= "#/" + message.get("id") %>">
+          <%= message.escape("body")%>
+        </a></td>
+        <td><%= moment(message.escape("created_at")).fromNow() %>
+      </tr>
+    <% }); %>
+    </tbody>
+  </table>
+
+
+  <a href="#new">Send a message</a>
+  <a href="#">Back to index</a>
 </article>
+
+

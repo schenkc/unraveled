@@ -1,7 +1,7 @@
 Unraveled.Views.MessageForm = Backbone.View.extend({
 
   events: {
-    'submite form': "submitForm"
+    'submit form': "submitForm"
   },
 
   id: "new-message-form",
@@ -21,12 +21,13 @@ Unraveled.Views.MessageForm = Backbone.View.extend({
     return this;
   },
 
-  submitForm: function (even) {
+  submitForm: function (event) {
     event.preventDefault();
 
     var $form = $(event.currentTarget);
+    console.log("$form", $form)
     var formData = $form.serializeJSON();
-
+    console.log("forDate", formData)
     this.collection.create(formData.message);
 
     $form[0].reset();
