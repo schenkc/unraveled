@@ -25,12 +25,12 @@ Unraveled.Views.MessageForm = Backbone.View.extend({
     event.preventDefault();
 
     var $form = $(event.currentTarget);
-    console.log("$form", $form)
     var formData = $form.serializeJSON();
-    console.log("forDate", formData)
     this.collection.create(formData.message);
 
     $form[0].reset();
+    console.log(this);
+    Backbone.history.navigate("", {trigger: true});
 
   }
 });
