@@ -7,15 +7,15 @@
       <tr>
         <td>Sender</td>
         <td>Message</td>
-        <td>Sent At</td>
+        <td>Sent</td>
       </tr>
     <% receivedMessages.forEach( function(message) { %>
       <tr>
         <td><%= message.sender().escape("name") %></td>
         <td><a href="<%= "#/" + message.get("id") %>">
-          <%= message.escape("body")%>
+          <%= message.escape("body").slice(0,50)%>
         </a></td>
-        <td><%= message.escape("created_at")%>
+        <td><%= moment(message.escape("created_at")).fromNow() %>
       </tr>
     <% }); %>
     </tbody>
@@ -33,15 +33,15 @@
       <tr>
         <td>Receiver</td>
         <td>Message</td>
-        <td>Sent At</td>
+        <td>Sent</td>
       </tr>
     <% sentMessages.forEach( function(message) { %>
       <tr>
         <td><%= message.receiver().escape("name") %></td>
         <td><a href="<%= "#/" + message.get("id") %>">
-          <%= message.escape("body")%>
+          <%= message.escape("body").slice(0,50)%>
         </a></td>
-        <td><%= message.escape("created_at")%>
+        <td><%= moment(message.escape("created_at")).fromNow() %>
       </tr>
     <% }); %>
     </tbody>

@@ -15,6 +15,7 @@
 //= require underscore
 //= require backbone
 //= require unraveled
+//= require moment.js
 //= require_tree ../templates
 //= require_tree ./models
 //= require_tree ./collections

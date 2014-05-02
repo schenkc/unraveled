@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 a = []
-100.times do |i|
+20.times do |i|
   u = User.new(email: Faker::Internet.safe_email,
                   name: Faker::Internet.user_name,
                   password: "123123",
@@ -19,9 +19,9 @@ end
 
 # user need avatars
 # patterns need photos
-
+TAGS = %w( bottom-up down-down icord in-the-round one-piece amigurumi reversible textured cables eyelets)
 b = (1...10).to_a
-1000.times do |i|
+100.times do |i|
   # user connections
   u = a.sample
   u2 = a.sample
@@ -42,7 +42,8 @@ b = (1...10).to_a
   needles = "US " + (2 * b.sample).to_s
   amount_yarn = "Enough"
   price = "free"
-  u.designs.create(name: name, yarn_name: yarn_name, yarn_weight: yarn_weight, stitch_col: stitch_col,
+  p = u.designs.create(name: name, yarn_name: yarn_name, yarn_weight: yarn_weight, stitch_col: stitch_col,
                     stitch_row: stitch_row, swatch: swatch, swatch_stitch: swatch_stitch, needles: needles,
                     amount_yarn: amount_yarn, price: price)
+  # p.tags = make_tags(TAGS.shuffle.slice(b.sample))
 end

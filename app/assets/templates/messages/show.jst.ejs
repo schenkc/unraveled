@@ -3,7 +3,7 @@
 <article class="sent-messages">
   <ul class="message-content">
     <li>Message sent to <%= message.escape("receiver_id") %> from
-      <%= message.escape("sender_id") %> at <%= message.escape("created_at") %>
+      <%= message.escape("sender_id") %> at <%= moment(message.escape("created_at")).fromNow() %>
       has<%= message.get("is_seen?") ? "" : " not"%> been seen.
     </li>
     <li class="message-body">
