@@ -15,8 +15,10 @@ if Rails.env.production?
     :domain         => 'heroku.com'
   }
   ActionMailer::Base.delivery_method ||= :smtp
+  config.action_mailer.default_url_options = { host: 'polar-chamber-4664.herokuapp.com' }
 elsif Rails.env.development?
   # Remember the letter_opener gem? It won't send real emails; it
   # just opens them in another tab.
   ActionMailer::Base.delivery_method = :letter_opener
+  
 end

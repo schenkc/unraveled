@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Unraveled::Application.config.secret_key_base = '84ee7aa58c8266586fdb966a4e5361d76a8228356bc614edb9889029796088bc87bdf0acd1604fcba13eef9755bc8ad3593d4749c4ef861d19886cc8616356bb'
+Unraveled::Application.config.secret_key_base = ENV["SECRET_KAY_BASE"]
