@@ -446,5 +446,11 @@ article.user-search {
  .sign-in-up input[type="submit"] {
    padding: 20px;
  }
+ 
+ .sign-in-up label {
+   display: block;
+   font-weight: bold;
+   padding: 20px 0 10px 0;
+ }
 
 
