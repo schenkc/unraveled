@@ -51,7 +51,7 @@
           <% unless current_user.notifications.empty? %>
             <strong><%= current_user.notifications.unread.size %></strong>
             <ul class="notification-drop-down">
-              <%= render partial: "notifications/notification", collection: current_user.notifications.unread[0..5] %>
+              <%= render partial: "notifications/notification", collection: current_user.notifications.unread.reverse[0..5] %>
               <% if current_user.notifications.unread.length > 6 %>
                 <li><a href="<%= notifications_url %>">See all notifications</a></li>
               <% end %>

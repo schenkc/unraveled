@@ -51,7 +51,7 @@ class Notification < ActiveRecord::Base
       user_url(library)
     when :new_message
       message = self.notifiable
-      message_url(message)
+      "/messages##{message.id}"
     end
   end
 

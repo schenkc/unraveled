@@ -11,7 +11,7 @@
       </tr>
     <% receivedMessages.forEach( function(message) { %>
       <tr>
-        <td><%= message.sender().escape("name") %></td>
+        <td><%= message.sender().showName() %></td>
         <td><a href="<%= "#/" + message.get("id") %>">
           <%= message.escape("body").slice(0,50)%>
         </a></td>
@@ -37,7 +37,7 @@
       </tr>
     <% sentMessages.forEach( function(message) { %>
       <tr>
-        <td><%= message.receiver().escape("name") %></td>
+        <td><%= message.receiver().showName() %></td>
         <td><a href="<%= "#/" + message.get("id") %>">
           <%= message.escape("body").slice(0,50)%>
         </a></td>

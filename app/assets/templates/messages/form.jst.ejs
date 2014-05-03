@@ -6,7 +6,7 @@
   <label for="receiver">Send message to</label>
   <select id = "receiver" name="message[receiver_id]">
     <% friends.forEach( function(friend){ %>
-      <option value="<%= friend.id %>"><%= friend.get('name') %></option>
+      <option value="<%= friend.id %>"><%= friend.showName() %></option>
     <% }); %>
   </select>
 

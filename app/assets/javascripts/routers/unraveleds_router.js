@@ -31,8 +31,9 @@ Unraveled.Routers.MessageRouter = Backbone.Router.extend({
   new: function() {
     var newMessage = new Unraveled.Models.Message();
     var formView = new Unraveled.Views.MessageForm({
-      collection: this.friends,
-      model: newMessage
+      collection: this.sentMessages,
+      model: newMessage,
+      friends: this.friends
     });
     this._swapView(formView)
   },

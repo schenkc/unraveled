@@ -6,7 +6,10 @@ Unraveled.Views.MessageForm = Backbone.View.extend({
 
   id: "new-message-form",
 
-  initialize: function () {
+  initialize: function (options) {
+    this.friends = options.friends
+    this.collection = options.collection
+    this.model = options.model
     this.render();
   },
 
@@ -14,7 +17,7 @@ Unraveled.Views.MessageForm = Backbone.View.extend({
 
   render: function () {
     var renderedContent = this.template({
-      friends: this.collection
+      friends: this.friends
     });
     this.$el.html(renderedContent);
 
@@ -26,10 +29,12 @@ Unraveled.Views.MessageForm = Backbone.View.extend({
 
     var $form = $(event.currentTarget);
     var formData = $form.serializeJSON();
+    console.log(this.collection)
     this.collection.create(formData.message);
 
     $form[0].reset();
     console.log(this);
+    this.collection.sort();
     Backbone.history.navigate("", {trigger: true});
 
   }

@@ -13,7 +13,7 @@
       </tr>
     <% thread.forEach( function(message) { %>
       <tr>
-        <td><%= message.sender().escape("name") %></td>
+        <td><%= message.sender().show_name %></td>
         <td><a href="<%= "#/" + message.get("id") %>">
           <%= message.escape("body")%>
         </a></td>
