@@ -14,7 +14,7 @@
 
 /* resets */
 
-h1, h2, h3, h4, body, section, div, button, a, label, form, li, ul, nav, article, form, strong {
+h1, h2, h3, h4, body, section, div, button, a, label, form, li, ul, nav, article, form, strong, p {
   padding: 0;
   margin: 0;
   border: 0;
@@ -27,6 +27,7 @@ input[type="email"],
 input[type="password"],
 input[type="submit"],
 input[type="url"],
+input[type="number"],
 textarea {
   -webkit-appearance: none;
   box-sizing: content-box;
@@ -417,7 +418,13 @@ article.user-search {
  .pattern-form input[type="text"], input[type="url"] {
    width: 350px;
    background: #D5F3D4;
-   padding: 10px 5px;
+   padding: 10px 10px;
+ }
+ 
+ .pattern-form input[type="number"] {
+   width: 40px;
+   background: #d5f3d4;
+   padding: 10px 10px;
  }
 
  .pattern-form textarea {

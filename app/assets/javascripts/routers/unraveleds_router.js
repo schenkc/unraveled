@@ -28,7 +28,8 @@ Unraveled.Routers.MessageRouter = Backbone.Router.extend({
     this._swapView(receivedMessageShowView);
   },
 
-  new: function() {
+  new: function(id) {
+    // var defaultFriend I want to use the query string to pull the user id to set a default in the drop down
     var newMessage = new Unraveled.Models.Message();
     var formView = new Unraveled.Views.MessageForm({
       collection: this.sentMessages,

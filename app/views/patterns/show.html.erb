@@ -70,7 +70,7 @@
 
   <section class="pattern-info">
     <p>
-      Guage: <%= @pattern.stitch_col %> stitches and <%= @pattern.stitch_row %> rows
+      Gauge: <%= @pattern.stitch_col %> stitches and <%= @pattern.stitch_row %> rows
       for a <%= @pattern.swatch %> inch swatch in <%= @pattern.swatch_stitch %> on
       <%= @pattern.needles %>
     </p>
@@ -92,13 +92,13 @@
 
     <form action="<%= pattern_url %>" method="post">
         <input type="hidden" name="_method" value="delete">
-      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
-      <input type="submit" value="Forget this pattern">
+      <%= auth_token %>
+      <input type="submit" value="Remove this pattern from unraveled, forever.">
     </form>
   <% elsif !@pattern.fans.include?(current_user) %>
 
     <form action="<%= pattern_user_liked_patterns_url(@pattern) %>" method="post">
-      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+      <%= auth_token %>
       <input type="submit" value="Add to Library">
     </form>
   <% end %>

@@ -44,8 +44,8 @@
           </a>
         <form action="<%= user_liked_pattern_url(pattern) %>" method="post">
           <input type="hidden" name="_method" value="delete">
-          <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
-          <input type="submit" value="Remove pattern">
+          <%= auth_token %>
+          <input type="submit" value="Remove pattern from library">
         </form>
 
           <% if pattern.instruction.exists? %>
@@ -67,14 +67,18 @@
   <footer class="followers">
     <% if @followers %>
     <h3>People you enjoy</h3>
-    <ul>
+    <table>
+      <tbody>
+    
       <% @followers.each do |user| %>
-        <li>
-          <a href="<%= user_url(user) %>">
-            <%= user.name ? user.name : user.email %>
-          </a>
-        </li>
+        <tr>
+          <td><a href="<%= user_url(user) %>">
+            <%= user.show_name %>
+          </a></td>
+          <td><a href="<%= messages_url + "#new" %>">Send a message</a></td>
+        </tr>
       <% end %>
-    </ul>
+    </tbody>
+  </table>
     <% end %>
   </footer>

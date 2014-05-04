@@ -25,7 +25,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    id = (params[:id] ? params[:id] : current_user.id)
+    @user = User.find(id)
     @patterns = @user.designs
     @library = @user.liked_patterns
     @followers = @user.followers

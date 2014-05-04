@@ -2,12 +2,21 @@
 
   <form class="user-edit" action="<%= user_url(current_user) %>" method="post" enctype="multipart/form-data">
     <input type="hidden" name="_method" value="patch">
-    <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+    <%= auth_token %>
+    <% if @user.avatar %>
+      <img class="avatar" src="<%= @user.avatar.url(:thumb) %>">
+      <label for="user-avatar">Change profile picture</label>
+      <input type="file" id="user-avatar" name="user[avatar]">
+    <% end %>
+    
     <label for="user-avatar">Profile picture</label>
     <input type="file" id="user-avatar" name="user[avatar]">
 
     <label for="user-name">Name</label>
     <input type="text" id="user-name" name="user[name]" value="<%= @user.name %>">
+    
+    <label for="user-email">Email</label>
+    <input type="email" id="user-email" name="user[email]" value="<%= @user.email %>">
 
     <label for="user-bio">Tell me more!</label>
     <textarea id="user-bio" name="user[bio]"><%= @user.bio %></textarea>
@@ -19,7 +28,7 @@
   I should have a change email, change password link here.  Use ActiveMailer and tokens to make this happen.
 
   <form class="delete-user" action="<%= user_url(current_user) %>" method="post">
-    <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+    <%= auth_token %>
     <input type="hidden" name="_method" value="delete">
     <input type="submit" value="Delete my account and all my patterns">
   </form>

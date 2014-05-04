@@ -60,14 +60,14 @@
         </li>
         <li>
           <form class="search-form" action="/search" method="get">
-            <input type="text" name="query" value="<%= params[:query] %>">
+            <input type="text" name="query" value="<%= params[:query] %>" placeholder="Patterns, tags, users, etc">
             <input type="submit" value="Search">
           </form>
         </li>
         <li>
           <form class="sign-out" action="<%= session_url %>" method="post">
               <input type="hidden" name="_method" value="delete">
-            <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+            <%= auth_token %>
             <input type="submit" value="Sign Out">
           </form>
         </li>
@@ -108,14 +108,14 @@
   <footer class="info group">
     <ul>
       <li>
-        This is my final project for <a href="http://www.appacademy.io/#p-home">App Academy</a>.
+        This is my final project for <a href="http://www.appacademy.io/#p-home" target="appacademy">App Academy</a>.
       </li>
       <li>
-        It's a clone of sorts of <a href="http://www.ravelry.com/">ravelry</a>.
+        It's a clone of sorts of <a href="http://www.ravelry.com/" target="ravelry">ravelry</a>.
       </li>
-      <li>
+      <!-- <li>
         Learn more about me.
-      </li>
+      </li> -->
     </ul>
   </footer>
 </body>

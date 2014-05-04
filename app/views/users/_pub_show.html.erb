@@ -3,14 +3,14 @@
   <img class="avatar" src="<%= @user.avatar.url(:thumb) %>">
   <% if @user.is_leader?(current_user) %>
     <form class="following" action="<%= user_follower_url(current_user, @user)%>" method="post">
-      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+      <%= auth_token %>
       <input type="hidden" name="_method" value="delete">
       <input type="submit" value="Unfollow">
     </form>
     <a href="/messages#new">Send <%= @user.show_name %> a message</a>
   <% else %>
     <form class="following" action="<%= user_followers_url(@user) %>" method="post">
-      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+      <%= auth_token %>
       <input type="submit" value="Follow">
     </form>
   <% end %>
@@ -34,8 +34,9 @@
           <%= pattern.name %>
         </a>
         <form action="<%= pattern_user_liked_patterns_url(pattern) %>" method="post">
-          <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+          <%= auth_token %>
           <input type="submit" value="Add to your Library">
+        </form>
       </li>
       <% end %>
     </ul>
@@ -60,10 +61,9 @@
           </a>
 
           <form action="<%= pattern_user_liked_patterns_url(pattern) %>" method="post">
-            <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+            <%= auth_token %>
             <input type="submit" value="Add to your Library">
-
-            This button needs to be tested still.
+          </form>
 
 
         </li>

@@ -6,38 +6,24 @@
   <% if action == :edit %>
     <input type="hidden" name="_method" value="patch">
   <% end %>
-  <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+  <%= auth_token %>
 
   <label for="pattern_name">Pattern name</label>
     <input id="pattern_name" name="pattern[name]" type="text" value="<%= pattern.name %>">
 
   <label for="pattern_category">Category</label>
     <select id="pattern_category" name="pattern[category]">
-      <option value="clothing" <%= "selected" if pattern.category == "clothing" %>>
-        Clothing
-      </option>
-      <option value="accessories" <%= "selected" if pattern.category == "accessories" %>>
-        Accessories
-      </option>
-      <option value="home" <%= "selected" if pattern.category == "home" %>>
-        Home
-      </option>
-      <option value="toys" <%= "selected" if pattern.category == "toys" %>>
-        Toys
-      </option>
-      <option value="pet" <%= "selected" if pattern.category == "pet" %>>
-        Pet
-      </option>
-      <option value="components" <%= "selected" if pattern.category == "components" %>>
-        Components
-      </option>
+      <% @category.each do |cat| %>
+        <option value="cat" <%= "selected" if pattern.category == cat %>><%= cat %></option>
+      <% end %>
+      
     </select>
 
     <label for="tags">Tags</label>
-    <input type="text" id="tags" name="tag[name]" value="<%= @tags.map { |tag| tag.name }.join(', ') if @tags %>">
+    <input type="text" id="tags" name="tag[name]" value="<%= @tags.map { |tag| tag.name }.join(', ') if @tags %>" placeholder="quick, cabled, amazing, etc">
 
     <label for="pattern-source">Where does this pattern live?</label>
-    <input type="url" id="pattern-source" name="pattern[url]" value="<%= pattern.url %>">
+    <input type="url" id="pattern-source" name="pattern[url]" value="<%= pattern.url %>" placeholder="http://">
     or
     <label for="pattern-pdf">Pattern pdf</label>
       <input type="file" id="pattern-pdf" name="pattern[instruction]">
@@ -49,18 +35,18 @@
     <input id="yarn-name" name="pattern[yarn_name]" type="text" value="<%= pattern.yarn_name %>">
 
   <label for="yarn-weight">Yarn weight</label>
-    <input id="yarn-weight" name="pattern[yarn_weight]" type="text" value="<%= pattern.yarn_weight %>">
+    <input id="yarn-weight" name="pattern[yarn_weight]" type="text" value="<%= pattern.yarn_weight %>" placeholder="DK? sport? sock?">
 
   <label>Gauge Information</label>
   <section class="gauge">
-  <input type="text" name="pattern[stitch_col]" value="<%= pattern.stitch_col %>"> stitches and <input type="text" name="pattern[stitch_row]" value="<%= pattern.stitch_row %>"> rows per <input type="text" name="pattern[swatch]" value="<%= pattern.swatch %>"> knit in <input type="text" name="pattern[swatch_stitch]" value="<%= pattern.swatch_stitch %>">
+  <input type="number" name="pattern[stitch_col]" value="<%= pattern.stitch_col %>"> stitches and <input type="number" name="pattern[stitch_row]" value="<%= pattern.stitch_row %>"> rows per <input type="text" name="pattern[swatch]" value="<%= pattern.swatch %>" placeholder="4 inches"> knit in <input type="text" name="pattern[swatch_stitch]" value="<%= pattern.swatch_stitch %>" placeholder="Stockenette stitch">
   </section>
 
   <label for="pattern-needles">Needles</label>
-    <input type="text" id="pattern-needles" name="pattern[needles]" value="<%= pattern.needles %>">
+    <input type="text" id="pattern-needles" name="pattern[needles]" value="<%= pattern.needles %>" placeholder="US 8">
 
   <label for="yarn-amount">Yarn amount</label>
-    <input type="text" id="yarn-amount" name="pattern[amount_yarn]" value="<%= pattern.amount_yarn %>">
+    <input type="text" id="yarn-amount" name="pattern[amount_yarn]" value="<%= pattern.amount_yarn %>" placeholder="Yards, m, or g">
 
   <label for="pattern-sizes">Sizes</label>
     <input type="text" id="pattern-sizes" name="pattern[sizes]" value="<%= pattern.sizes %>">
@@ -69,7 +55,7 @@
     <input type="text" id="pattern-price" name="pattern[price]" value="<%= pattern.price %>">
 
   <label for="pattern-notes">Notes</label>
-    <textarea id="pattern-notes" name="pattern[notes]"><%= pattern.notes %></textarea>
+    <textarea id="pattern-notes" name="pattern[notes]" placeholder="Anything else we should know?"><%= pattern.notes %></textarea>
 
 
   <input type="submit" value="<%= button_text %>">

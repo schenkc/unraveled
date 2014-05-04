@@ -1,6 +1,6 @@
 Unraveled::Application.routes.draw do
   get 'users/activate' => 'users#activate_user'
-  root to: 'sessions#new'
+  root to: 'users#show'
   resources :users, only: [:new, :create, :show, :edit, :update, :index, :destroy] do
     resources :patterns, only: [:index]
     resources :followers, only: [:create, :destroy]

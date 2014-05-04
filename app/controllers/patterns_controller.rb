@@ -2,8 +2,11 @@ class PatternsController < ApplicationController
 
 before_filter :require_signed_in!
 
+CATEGORIES = %w( Clothing Accessories Home Toys Pet Components )
+
   def new
     @pattern = Pattern.new
+    @category = CATEGORIES
     render :new
   end
 
@@ -22,13 +25,14 @@ before_filter :require_signed_in!
   end
 
   def index
-    @patterns ||= Pattern.includes(:tags).page(params[:page])
+    @patterns ||= Pattern.includes(:tags).page(params[:page]).per(10)
     render :index
   end
 
   def edit
     @pattern = Pattern.find(params[:id])
     @tags = @pattern.tags
+    @category = CATEGORIES
     render :edit
   end
 
@@ -72,8 +76,8 @@ before_filter :require_signed_in!
         end
       end
     end
-    @patterns = Kaminari.paginate_array(@patterns).page(params[:page])
-    @display_users = Kaminari.paginate_array(@display_users).page(params[:page])
+    @patterns = Kaminari.paginate_array(@patterns).page(params[:page]).per(10)
+    @display_users = Kaminari.paginate_array(@display_users).page(params[:page]).per(10)
     render :index
   end
 
