@@ -7,10 +7,12 @@
       <img class="avatar" src="<%= @user.avatar.url(:thumb) %>">
       <label for="user-avatar">Change profile picture</label>
       <input type="file" id="user-avatar" name="user[avatar]">
-    <% end %>
+    <% else %>
     
-    <label for="user-avatar">Profile picture</label>
-    <input type="file" id="user-avatar" name="user[avatar]">
+      <label for="user-avatar">Profile picture</label>
+      <input type="file" id="user-avatar" name="user[avatar]">
+      
+      <% end %>
 
     <label for="user-name">Name</label>
     <input type="text" id="user-name" name="user[name]" value="<%= @user.name %>">
