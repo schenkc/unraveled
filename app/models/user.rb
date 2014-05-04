@@ -126,7 +126,7 @@ class User < ActiveRecord::Base
   end
 
   def is_leader?(user)
-    self.followers.where(id: user.id).count == 0 ? false : true
+    self.followers.include?(user)
   end
 
   def show_name
