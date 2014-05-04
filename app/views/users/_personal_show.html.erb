@@ -65,12 +65,12 @@
 </section>
 
   <footer class="followers">
-    <% if @followers %>
+    <% if @leaders %>
     <h3>People you enjoy</h3>
     <table>
       <tbody>
     
-      <% @followers.each do |user| %>
+      <% @leaders.each do |user| %>
         <tr>
           <td><a href="<%= user_url(user) %>">
             <%= user.show_name %>
@@ -81,4 +81,20 @@
     </tbody>
   </table>
     <% end %>
+      <% if @followers %>
+      <h3>People who enjoy you</h3>
+      <table>
+        <tbody>
+    
+        <% @followers.each do |user| %>
+          <tr>
+            <td><a href="<%= user_url(user) %>">
+              <%= user.show_name %>
+            </a></td>
+            <td><a href="<%= messages_url + "#new" %>">Send a message</a></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+      <% end %>
   </footer>

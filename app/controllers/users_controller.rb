@@ -29,6 +29,7 @@ class UsersController < ApplicationController
     @user = User.find(id)
     @patterns = @user.designs
     @library = @user.liked_patterns
+    @leaders = @user.leaders
     @followers = @user.followers
     render :show
   end
