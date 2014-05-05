@@ -1,7 +1,7 @@
 <header class="content-header group">
   <h1>Hey there <%= @user.show_name %></h1>
   <img class="avatar" src="<%= current_user.avatar.url(:thumb) %>">
-  <a href="<%= edit_user_url %>">Edit Profile</a>
+  <a href="<%= edit_user_url @user %>">Edit Profile</a>
 </header>
 
 <section class="group">

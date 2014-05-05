@@ -1,4 +1,4 @@
-<% if current_user.id.to_s == params[:id] %>
+<% if current_user.id.to_s == params[:id] || current_user == @user %>
 
   <%= render "personal_show", locals: {library: @library, patterns: @patterns, user: @user} %>
 
