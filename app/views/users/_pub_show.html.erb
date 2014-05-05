@@ -7,7 +7,7 @@
       <input type="hidden" name="_method" value="delete">
       <input type="submit" value="Unfollow">
     </form>
-    <a href="/messages#new">Send <%= @user.show_name %> a message</a>
+    <a href='<%= "/messages#new?id=#{@user.id}" %>'>Send <%= @user.show_name %> a message</a>
   <% else %>
     <form class="following" action="<%= user_followers_url(@user) %>" method="post">
       <%= auth_token %>

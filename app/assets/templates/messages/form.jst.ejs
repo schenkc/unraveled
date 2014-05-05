@@ -1,19 +1,24 @@
 <h1>New Message</h1>
 
-<form class="message" id="new-message-form">
+<section class="new-message group">
+  <form class="new-message-form" id="new-message-form">
+    
+    <section class="new-message-sender">
+      <label for="receiver">Send message to</label>
+    
+      <select id = "receiver" name="message[receiver_id]">
+        <% friends.forEach( function(friend){ %>
+          <option value="<%= friend.id %>" <%= defaultFriend == friend ? "selected" : "" %>><%= friend.showName() %></option>
+        <% }); %>
+      </select>
+    </section>
 
-
-  <label for="receiver">Send message to</label>
-  <select id = "receiver" name="message[receiver_id]">
-    <% friends.forEach( function(friend){ %>
-      <option value="<%= friend.id %>"><%= friend.showName() %></option>
-    <% }); %>
-  </select>
-
-  <label for="body">Message</label>
-  <textarea id="body" name="message[body]" spellcheck="true" placeholder="Say something, interesting or not!"></textarea>
-
-  <input type="submit" name="commit" value="Send">
-</form>
-
+    <textarea id="body" name="message[body]" spellcheck="true" placeholder="Say something, interesting or not!">
+    </textarea>
+    
+    <div class="submit">
+      <input type="submit" name="commit" value="Send">
+    </div>
+  </form>
+</section>
 <a href="#">Cancel and go back to index</a>

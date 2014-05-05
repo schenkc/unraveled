@@ -459,5 +459,19 @@ article.user-search {
    font-weight: bold;
    padding: 20px 0 10px 0;
  }
+ 
+ /* new message form */
+ 
+ .new-message textarea {
+   width: 350px;
+   height: 200px;
+   background: #D5F3D4;
+   padding-bottom: 20px;
+   padding: 10px 5px;
+   margin: 10px 0;
+ }
+ 
+
+ 
 
 
