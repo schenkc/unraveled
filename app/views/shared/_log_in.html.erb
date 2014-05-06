@@ -4,14 +4,25 @@
 <form class="sign-in-up" action="<%= action_url %>" method="post">
   <%= auth_token %>
 
-    <input id="user_username" name="user[email]" type="text" placeholder="email">
+    <input id="user-username" name="user[email]" type="text" placeholder="email">
 
-    <input id="user_password" name="user[password]" type="password" placeholder="password">
+    <input id="user-password" name="user[password]" type="password" placeholder="password">
 
 
   <% if action == :user %>
-    <input id="user_password_confirmation" name="user[password_confirmation]" type="password" placeholder="password confirmation">
+    <input id="user-password-confirmation" name="user[password_confirmation]" type="password" placeholder="password confirmation">
   <% end %>
 
   <input type="submit" value="<%= button_text %>">
 </form>
+
+<a id="demo-user-signin" class="demo-user">Demo User</a>
+  
+<script>
+  $("#demo-user-signin").on("click", function(event){
+    $("#user-username").val("demo_user1@example.com");
+    $("#user-password").val("123123");
+    
+  });
+  
+</script>

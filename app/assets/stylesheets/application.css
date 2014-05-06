@@ -460,6 +460,20 @@ article.user-search {
    padding: 20px 0 10px 0;
  }
  
+ .demo-user {
+   font-size: 48px;
+   text-align: right;
+   padding: 10px 15px;
+   color: #d5f3d4;
+   background: #90007b;
+   border-radius: 5px;
+ }
+ 
+ .demo-user:hover {
+   color: #90007b;
+   background: #d5f3d4;
+ }
+ 
  /* new message form */
  
  .new-message textarea {

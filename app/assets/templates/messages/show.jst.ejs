@@ -11,7 +11,7 @@
       </tr>
     <% thread.forEach( function(message) { %>
       <tr>
-        <td><%= message.sender().show_name %></td>
+        <td><%= message.sender().get("name") ? message.sender().get("name") : message.sender().get("email") %></td>
         <td><a href="<%= "#/" + message.get("id") %>">
           <%= message.escape("body")%>
         </a></td>

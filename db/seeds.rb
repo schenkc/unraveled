@@ -7,6 +7,22 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 a = []
+u = User.new(email: "demo_user1@example.com",
+              name: "demo1",
+              password: "123123",
+              bio: "I'm the demo user, please have fun poking around here.",
+              activate: true)
+u.save if u.valid?
+a << u
+
+u = User.new(email: "demo_user2@example.com",
+              name: "demo2",
+              password: "123123",
+              bio: "I'm the other demo user, please have fun poking around here.",
+              activate: true)
+u.save if u.valid?
+a << u
+
 20.times do |i|
   u = User.new(email: Faker::Internet.safe_email,
                   name: Faker::Internet.user_name,
