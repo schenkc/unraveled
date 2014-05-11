@@ -472,6 +472,7 @@ article.user-search {
  .demo-user:hover {
    color: #90007b;
    background: #d5f3d4;
+   cursor: pointer;
  }
  
  /* new message form */
