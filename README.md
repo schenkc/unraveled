@@ -1,6 +1,6 @@
 unraveled
 ==
-[unraveled](unraveled.schenkc.com) is a clone of (ravelry)[www.ravelry.com].  Unraveled was made by (Candace Schenk)[schenkc.com] in the spring of 2014.
+[unraveled](unraveled.schenkc.com) is a clone of [ravelry](www.ravelry.com).  Unraveled was made by [Candace Schenk](schenkc.com) in the spring of 2014.
 
 
 What is ravelry?
