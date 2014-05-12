@@ -4,15 +4,15 @@
 
 === What is ravelry?
 
-TO quote them: Ravelry is a place for knitters, crocheters, designers, spinners, weavers and dyers to keep track of their yarn, tools, project and pattern information, and look to others for ideas and inspiration.
+To quote them: Ravelry is a place for knitters, crocheters, designers, spinners, weavers and dyers to keep track of their yarn, tools, project and pattern information, and look to others for ideas and inspiration.
 
 === unraveled's features
 
-Unraveled is smaller in scope, with socail features more prominent.
+Unraveled is smaller in scope, with social features more prominent.
 
 * adding and tagging patterns
 
-* searching, patterns, tags, and users
+* searching patterns, tags, and users
 
 * photo and pdf uploading
 
@@ -22,7 +22,7 @@ Unraveled is smaller in scope, with socail features more prominent.
 
 * following
 
-* collection other people's patterns
+* collecting other people's patterns
 
 === technologies used
 
@@ -30,20 +30,22 @@ The backend is Ruby on Rails.
 
 The frontend has a little backbone.  All styling was done by hand using CSS.  The HTML is semantic.
 
-* the form for adding a patter is a nested form, which makes associated tags, adds multiple photos, and file instruction upload.  File upload is handled using paperclip and AWS.
+* the form for adding a pattern has nested attributes, and creates patterns along with associated tags, multiple photos, and pdf instructions.  File upload is handled using paperclip and AWS.
 
-* searching is implamented using gp-search and displayed using kaminari
+* searching is implemented using pg-search and displayed across multiple pages using kaminari
 
-* notifications is implamented using a polymorphic model and some hand crafted callbacks.
+* notifications are implemented using a polymorphic model and some hand crafted callbacks.
 
 * the messaging section is a full backbone.js installation.  Multiple collections of data are bootstrapped in.
 
 === TODO
 
-* voting/rating list trending patterns and users
+In the future, I hope to implement
+
+* voting/rating to feature trending patterns and users
 
 * password recovery/change email
 
 * add icons
 
-* photo carasels for patterns show page
+* photo carrousels on patterns' show pages
