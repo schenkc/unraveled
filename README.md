@@ -3,11 +3,13 @@ unraveled
 [unraveled](unraveled.schenkc.com) is a clone of (ravelry)[www.ravelry.com].  Unraveled was made by (Candace Schenk)[schenkc.com] in the spring of 2014.
 
 
-=== What is ravelry?
+What is ravelry?
+===
 
 To quote them: Ravelry is a place for knitters, crocheters, designers, spinners, weavers and dyers to keep track of their yarn, tools, project and pattern information, and look to others for ideas and inspiration.
 
-=== unraveled's features
+unraveled's features
+===
 
 Unraveled is smaller in scope, with social features more prominent.
 
@@ -25,7 +27,8 @@ Unraveled is smaller in scope, with social features more prominent.
 
 * collecting other people's patterns
 
-=== technologies used
+technologies used
+=== 
 
 The backend is Ruby on Rails.
 
@@ -39,7 +42,8 @@ The frontend has a little backbone.  All styling was done by hand using CSS.  Th
 
 * the messaging section is a full backbone.js installation.  Multiple collections of data are bootstrapped in.
 
-=== TODO
+TODO
+===
 
 In the future, I hope to implement
 
