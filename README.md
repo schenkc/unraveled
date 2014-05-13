@@ -32,7 +32,7 @@ technologies used
 
 The backend is Ruby on Rails.
 
-The frontend has a little backbone.  All styling was done by hand using CSS.  The HTML is semantic.
+The frontend has a little Backbone.js.  All styling was done by hand using CSS.  The HTML is semantic.
 
 * the form for adding a pattern has nested attributes, and creates patterns along with associated tags, multiple photos, and pdf instructions.  File upload is handled using paperclip and AWS.
 
@@ -40,7 +40,7 @@ The frontend has a little backbone.  All styling was done by hand using CSS.  Th
 
 * notifications are implemented using a polymorphic model and some hand crafted callbacks.
 
-* the messaging section is a full backbone.js installation.  Multiple collections of data are bootstrapped in.
+* the messaging section is a full Backbone.js installation.  Multiple collections of data are bootstrapped in.
 
 TODO
 ===
