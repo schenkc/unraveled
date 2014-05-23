@@ -159,6 +159,7 @@ h3 {
 
 .user-nav > li.looking:hover > .go-places-drop-down {
   display: block;
+  z-index: 100;
 }
 
 .go-places-drop-down > li {
@@ -178,6 +179,7 @@ h3 {
 
 li.notify:hover > .notification-drop-down {
   display: block;
+  z-index: 100;
 }
 
 .notification-drop-down > li {
