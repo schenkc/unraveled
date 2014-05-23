@@ -117,10 +117,8 @@ $(document).ready(function(){
 
     var delay = 5000;
     var carrousel = $("#carrousel");
-    console.log(carrousel);
     var itemsHolder = carrousel.find("> ul");
     var items = itemsHolder.find("> li");
-    console.log(items);
     var itemWidth = items.first().width();
     var currentItem = -1;
     var timerId;
@@ -176,7 +174,6 @@ $(document).ready(function(){
 
     var move = function(){
       var html = (currentItem + 1) + " / " + items.length;
-      console.log(html);
       numberLabel.html(html);
   
       var leftPosition = currentItem * itemWidth * -1;
