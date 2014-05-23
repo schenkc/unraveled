@@ -51,7 +51,7 @@ CATEGORIES = %w( Clothing Accessories Home Toys Pet Components )
   end
 
   def show
-    @pattern = Pattern.includes(:tags).find(params[:id])
+    @pattern = Pattern.includes(:tags, :pictures).find(params[:id])
     @designer = @pattern.designer
     render :show
   end

@@ -1,17 +1,20 @@
-<div id="carrousel" class="pattern-photos">
-  <ul class="group">
-    <% @pattern.pictures.each do |picture| %>
-      <li><img src="<%= picture.image.url(:thumb) %>"></li>
-    <% end %>
-  </ul>
+<% if @pattern.pictures.count != 0 %>
+  <div id="carrousel" class="pattern-photos">
+    <ul class="group">
+      <% @pattern.pictures.each do |picture| %>
+        <li><img src="<%= picture.image.url(:thumb) %>"></li>
+      <% end %>
+    </ul>
 
-</div>
+  </div>
 
-<div id="carrousel-nav">
-  <span class="previous">Previous</span> &mdash;
-  <strong class="number">0 / 0</strong> &mdash;
-  <span class="next">Next</span>
-</div>
+  <div id="carrousel-nav">
+    <span class="previous">Previous</span> &mdash;
+    <strong class="number">0 / 0</strong> &mdash;
+    <span class="next">Next</span>
+  </div>
+
+<% end %>
 
 <h1><%= @pattern.name %></h1>
 
@@ -54,11 +57,11 @@
           <%= @pattern.sizes %>
         </td>
       </tr>
-      <tr>
+      <!-- <tr>
         <td>Price</td>
         <td>
           <%= @pattern.price %>
-        </td>
+        </td> -->
       </tr>
       <tr>
         <td>pdf for download?</td>
