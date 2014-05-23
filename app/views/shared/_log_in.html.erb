@@ -19,10 +19,11 @@
 <a id="demo-user-signin" class="demo-user">Demo User</a>
   
 <script>
-  $("#demo-user-signin").on("click", function(event){
-    $("#user-username").val("demo_user1@example.com");
-    $("#user-password").val("123123");
-    
-  });
+$(document).ready(function({
+    $("#demo-user-signin").on("click", function(event){
+      $("#user-username").val("demo_user1@example.com");
+      $("#user-password").val("123123");
+    });
+  }));
   
 </script>
