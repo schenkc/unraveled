@@ -262,6 +262,7 @@ DEPENDENCIES
   pg_search
   rails (= 4.0.4)
   rails_12factor
+  rails_serve_static_assets
   rspec-rails
   sass-rails (~> 4.0.2)
   sdoc

@@ -61,6 +61,7 @@ gem 'ejs'
 gem 'faker'
 
 gem 'rails_12factor', group: :production
+gem 'rails_serve_static_assets', group: :production
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
