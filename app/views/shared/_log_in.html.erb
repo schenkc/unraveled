@@ -1,3 +1,7 @@
+  <% content_for :jqueryjs do %>
+    <%= javascript_include_tag "man_for_jquery" %>
+  <% end %>
+
 <% action_url = ( action == :session) ? session_url : users_url %>
 <% button_text = ( action == :session ) ? "Sign In" : "Sign Up" %>
 
@@ -19,11 +23,11 @@
 <a id="demo-user-signin" class="demo-user">Demo User</a>
   
 <script>
-$(document).ready(function({
+$(document).ready(function() {
     $("#demo-user-signin").on("click", function(event){
       $("#user-username").val("demo_user1@example.com");
       $("#user-password").val("123123");
     });
-  }));
+  });
   
 </script>
