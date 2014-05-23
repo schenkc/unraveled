@@ -14,7 +14,7 @@
   <label for="pattern_category">Category</label>
     <select id="pattern_category" name="pattern[category]">
       <% @category.each do |cat| %>
-        <option value="cat" <%= "selected" if pattern.category == cat %>><%= cat %></option>
+        <option value="<%= cat %>" <%= "selected" if pattern.category == cat %>><%= cat %></option>
       <% end %>
       
     </select>

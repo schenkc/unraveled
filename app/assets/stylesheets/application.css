@@ -140,7 +140,7 @@ h3 {
   font-weight: bold;
   position: relative;
   float: left;
-  padding: 60px 15px 4px 15px;
+  padding: 30px 15px 30px 15px;
 }
 
 .user-nav > li.looking:hover {
@@ -150,8 +150,10 @@ h3 {
 .user-nav .go-places-drop-down {
   display: none;
   position: absolute;
+  border-top: 2px solid #ddd;
   border-left: 2px solid #ddd;
   border-right: 2px solid #ddd;
+  
   width: 200px;
 }
 
@@ -168,6 +170,7 @@ h3 {
 .notification-drop-down {
   display: none;
   position: absolute;
+  border-top: 2px solid #ddd;
   border-left: 2px solid #ddd;
   border-right: 2px solid #ddd;
   width: 300px;
@@ -201,6 +204,7 @@ li.notify:hover > .notification-drop-down {
   background: #D5F3D4;
   font-weight: normal;
   color: black;
+  padding-left: 5px;
 }
 /* for every page */
 
@@ -486,6 +490,42 @@ article.user-search {
    margin: 10px 0;
  }
  
+ /* carrousel */
+ 
+ #carrousel {
+   position: relative;
+   height: 100px;
+   width: 150px;
+   margin: 20px auto 20px auto;
+   overflow: hidden;
+   border: 2px solid #ddd;
+ }
+ 
+ #carrousel > ul {
+   left: 0px;
+   top: 0;
+   position: absolute;
+ }
+ 
+ #carrousel > ul > li {
+   height: 100px;
+   width: 150px;
+   float: left;
+ }
+ 
+ #carrousel-nav {
+   text-align: center;
+ }
+ 
+ #carrousel-nav > span {
+   font-weight: bold;
+   cursor: pointer;
+   color: #90007b;
+ }
+ 
+ #carrousel-nav > span:hover {
+   color: #a5cb93;
+ }
 
  
 
