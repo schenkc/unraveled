@@ -1,7 +1,3 @@
-  <% content_for :headjs do %>
-    <%= javascript_include_tag "application" %>
-  <% end %>
-  
 <div class="message"></div>
 <script id="bootstrapped-messages" type="application/json">
   <%= { receivedMessages: @received_messages.as_json(include: :sender),
