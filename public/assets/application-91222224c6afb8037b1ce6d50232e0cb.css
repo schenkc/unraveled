@@ -1,0 +1,533 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+
+
+ */
+
+/* resets */
+
+
+h1, h2, h3, h4, body, section, div, button, a, label, form, li, ul, nav, article, form, strong, p {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="submit"],
+input[type="url"],
+input[type="number"],
+textarea {
+  -webkit-appearance: none;
+  box-sizing: content-box;
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font: inherit;
+  vertical-align: baseline;
+  width: auto;
+  background: transparent;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  font-weight: bold;
+  text-decoration: none;
+  color: #90007b;
+}
+
+a:hover {
+  color: #a5cb93;
+}
+
+input[type="submit"] {
+  display: inline;
+  cursor: pointer;
+}
+
+body {
+  font-family: sans-serif;
+  font-size: 16px;
+  background: #D5F3D4;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+  background: #d5f3d4;
+  font: inherit;
+}
+
+input[type="submit"] {
+  background: transparent;
+  font-weight: bold;
+  color: #fff;
+}
+
+strong {
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 48px;
+}
+
+h2 {
+  font-size: 24px;
+}
+
+h3 {
+  font-size: 20px;
+}
+
+/* clear fix */
+
+.group:after {
+  content: "";
+  clear: both;
+  display: block;
+}
+
+/* nav bar stuff */
+
+.logo {
+  height: 80px;
+  float: left;
+}
+
+.nav-bar a {
+  color: #fff;
+}
+
+.nav-bar a:hover {
+  color: #90007b;
+}
+
+.nav-bar {
+  width: 900px;
+  margin: auto;
+}
+
+.nav-bar-header {
+  background: #a5cb93;
+  border-bottom: 2px solid #ddd;
+}
+
+.user-nav {
+  float: left;
+}
+
+.user-nav > li {
+  color: #fff;
+  font-weight: bold;
+  position: relative;
+  float: left;
+  padding: 30px 15px 30px 15px;
+}
+
+.user-nav > li.looking:hover {
+  color: #90007b;
+}
+
+.user-nav .go-places-drop-down {
+  display: none;
+  position: absolute;
+  border-top: 2px solid #ddd;
+  border-left: 2px solid #ddd;
+  border-right: 2px solid #ddd;
+  
+  width: 200px;
+}
+
+.user-nav > li.looking:hover > .go-places-drop-down {
+  display: block;
+}
+
+.go-places-drop-down > li {
+  border-bottom: 2px solid #ddd;
+  padding: 10px 20px;
+  background: #a5cb93;
+}
+
+.notification-drop-down {
+  display: none;
+  position: absolute;
+  border-top: 2px solid #ddd;
+  border-left: 2px solid #ddd;
+  border-right: 2px solid #ddd;
+  width: 300px;
+}
+
+li.notify:hover > .notification-drop-down {
+  display: block;
+}
+
+.notification-drop-down > li {
+  border-bottom: 2px solid #ddd;
+  padding: 10px 20px;
+  background: #a5cb93;
+}
+
+.notify > strong {
+  font-size: 12px;
+  background: #90007b;
+  padding: 2px 7px;
+  border-radius: 12px;
+}
+
+.nav-bar input[type="submit"] {
+  color: #fff;
+}
+.nav-bar input[type="submit"]:hover {
+  color: #90007b;
+}
+
+.nav-bar input[type="text"] {
+  background: #D5F3D4;
+  font-weight: normal;
+  color: black;
+  padding-left: 5px;
+}
+/* for every page */
+
+img {
+  display: block;
+  height: 100px;
+}
+
+section.content {
+  width: 856px;
+  margin: auto;
+  padding: 20px;
+  border-left: 2px solid #ddd;
+  border-right: 2px solid #ddd;
+  background: #fff;
+}
+
+input[type="submit"] {
+  color: #90007b;
+}
+input[type="submit"]:hover {
+  color: #a5cb93;
+}
+
+/* footer */
+
+footer.info {
+  background: #a5cb93;
+  margin: auto;
+  width: 896px;
+  border: 2px solid #ddd;
+  margin-bottom: 100px;
+}
+
+footer.info > ul {
+  float: left;
+}
+
+footer.info li {
+  float: left;
+  padding: 20px;
+}
+
+footer.info a {
+  font-weight: normal;
+}
+footer.info a:hover {
+  color: #90007b;
+}
+
+/* user's own show page */
+
+.content-header {
+}
+
+.content-header h1 {
+  display: block;
+  float: left;
+}
+
+.content-header img {
+  float: right;
+}
+
+.content-head a {
+}
+
+/* patterns */
+
+article.patterns {
+  width: 407px;
+  border-right: 2px solid #ddd;
+  float: left;
+}
+
+.patterns a {
+  display: block;
+  padding: 10px;
+}
+
+/* library */
+
+article.library {
+  width: 407px;
+  float: right;
+}
+
+.library a {
+  display: block;
+  padding: 10px;
+}
+
+.library input[type="submit"] {
+  padding: 0 0 10px 10px;
+}
+
+/* footer */
+
+footer.followers {
+  margin-top: 20px;
+  border-top: 2px solid #ddd;
+  padding: 15px 0;
+}
+
+.followers h3 {
+  padding-bottom: 15px;
+}
+
+.followers li {
+}
+
+.followers a {
+  display: block;
+  padding: 10px;
+}
+
+/* other's show page */
+
+.user-info {
+}
+
+.user-info h1 {
+  display: block;
+  float: left;
+}
+
+.user-info img {
+  float: right;
+}
+
+.user-info a {
+}
+
+.user-info p {
+  display: block;
+}
+
+/* main index page */
+
+article.pattern-listing {
+  width: 407px;
+  border-right: 2px solid #ddd;
+  float: left;
+}
+
+.pattern-listing a {
+  display: inline-block;
+  padding: 5px;
+}
+
+article.user-search {
+  width: 407px;
+  float: right;
+}
+
+.user-search a {
+  display: inline-block;
+  padding: 10px;
+}
+
+/* user index page */
+
+.user-index li {
+  float: left;
+  width: 204px;
+  height: 204px;
+}
+ /* user edit form */
+
+ .user-edit-header {
+   text-align: center;
+ }
+
+ .user-edit {
+   width: 400px;
+   margin: auto;
+ }
+
+ .user-edit label {
+   display: block;
+   font-weight: bold;
+   padding: 20px 0 10px 0;
+ }
+
+ .user-edit input[type="text"] {
+   width: 350px;
+   background: #D5F3D4;
+ }
+
+ .user-edit textarea {
+   width: 350px;
+   height: 200px;
+   background: #D5F3D4;
+   padding-bottom: 20px;
+ }
+
+ .delete-user {
+   padding: 20px;
+   margin: auto;
+ }
+
+/* pattern form */
+
+ .pattern-form {
+   width: 400px;
+   margin: auto;
+ }
+
+ .pattern-form label {
+   display: block;
+   font-weight: bold;
+   padding: 20px 0 10px 0;
+ }
+
+ .pattern-form input[type="text"], input[type="url"] {
+   width: 350px;
+   background: #D5F3D4;
+   padding: 10px 10px;
+ }
+ 
+ .pattern-form input[type="number"] {
+   width: 40px;
+   background: #d5f3d4;
+   padding: 10px 10px;
+ }
+
+ .pattern-form textarea {
+   width: 350px;
+   height: 200px;
+   background: #D5F3D4;
+   padding-bottom: 20px;
+   padding: 10px 5px;
+ }
+
+ .pattern-form input[type="submit"] {
+   padding: 20px;
+ }
+
+/* sign in/up */
+
+ .sign-in-up {
+   padding: 30px;
+ }
+
+ .sign-in-up input[type="text"], input[type="password"] {
+   background: #d5f3d4;
+   padding: 10px 5px;
+ }
+
+ .sign-in-up input[type="submit"] {
+   padding: 20px;
+ }
+ 
+ .sign-in-up label {
+   display: block;
+   font-weight: bold;
+   padding: 20px 0 10px 0;
+ }
+ 
+ .demo-user {
+   font-size: 48px;
+   text-align: right;
+   padding: 10px 15px;
+   color: #d5f3d4;
+   background: #90007b;
+   border-radius: 5px;
+ }
+ 
+ .demo-user:hover {
+   color: #90007b;
+   background: #d5f3d4;
+   cursor: pointer;
+ }
+ 
+ /* new message form */
+ 
+ .new-message textarea {
+   width: 350px;
+   height: 200px;
+   background: #D5F3D4;
+   padding-bottom: 20px;
+   padding: 10px 5px;
+   margin: 10px 0;
+ }
+ 
+ /* carrousel */
+ 
+ #carrousel {
+   position: relative;
+   height: 100px;
+   width: 150px;
+   margin: 20px auto 20px auto;
+   overflow: hidden;
+   border: 2px solid #ddd;
+ }
+ 
+ #carrousel > ul {
+   left: 0px;
+   top: 0;
+   position: absolute;
+ }
+ 
+ #carrousel > ul > li {
+   height: 100px;
+   width: 150px;
+   float: left;
+ }
+ 
+ #carrousel-nav {
+   text-align: center;
+ }
+ 
+ #carrousel-nav > span {
+   font-weight: bold;
+   cursor: pointer;
+   color: #90007b;
+ }
+ 
+ #carrousel-nav > span:hover {
+   color: #a5cb93;
+ }
+
+ 
+
+
