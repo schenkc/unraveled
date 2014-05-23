@@ -19,6 +19,9 @@ module Unraveled
       request_specs: true
       g.fixture_replacement :factory_girl, dir: 'spec/factories'
     end
+    
+    config.assets.precompile += %w( man_for_jquery.js carrousel_man.js application.js )
+ 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
