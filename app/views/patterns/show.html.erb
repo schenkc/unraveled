@@ -66,7 +66,7 @@
       <tr>
         <td>pdf for download?</td>
         <td>
-          <%= @pattern.instruction ? "yes" : "no" %>
+          <%= @pattern.instruction.exists? ? "yes" : "no" %>
         </td>
       </tr>
       <tr>
